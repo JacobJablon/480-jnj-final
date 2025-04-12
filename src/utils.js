@@ -34,6 +34,7 @@ const setupMap = (route, zoom = 15) => {
     const map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v12',
+        //satellite-v9 <-- alternative if we want satellite imagery
         center: [midpointCoords.lon, midpointCoords.lat],
         zoom: zoom,
         interactive: true
