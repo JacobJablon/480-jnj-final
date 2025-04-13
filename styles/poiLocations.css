@@ -1,0 +1,23 @@
+#topUI {
+  width: 80vw;
+  margin: 0 10vw;
+  position: absolute;
+  top: 3vh;
+}
+
+#bottomUI {
+  width: 80vw;
+  margin: 0 10vw;
+  position: absolute;
+  top: 90vh;
+}
+
+#startBtn {
+  opacity: 0.3;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  position: absolute;
+  top: 0;
+  z-index: 5;
+}
