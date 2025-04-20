@@ -1,57 +1,59 @@
-const locations = [{ Title: "Xerox", captionPath: "" }];
+const locations = [
+  { Title: "Xerox", captionPath: "../assets/script_intro.vtt" },
+];
 
-export const loadUI = (place) => {
-  const body = document.querySelector("body");
-  const html = `<div>
-    <div id="topUI" class="fixed-grid has-4-cols">
-      <div class="grid is-column-gap-4">
-        <button id="mapBtn" class="cell button icon is-large mt-2"><i
-            class="fa-solid fa-map-location-dot fas fa-lg"></i></button>
-        <div id="titleBox" class="box cell is-col-span-3" class="cell">${
-          locations[place.Title]
-        }</div>
-      </div>
+const loadUI = (place, parent) => {
+  const body = parent;
+  const html = `
+  <div id="topUI" class="fixed-grid has-4-cols">
+            <div class="grid is-column-gap-4">
+                <button id="mapBtn" class="cell button mt-2"><span class="icon is-large">
+                        <i class="fa-solid fa-map-location-dot fas fa-lg"></i>
+                    </span></button>
+                <div id="titleBox" class="box cell is-col-span-3" class="cell">Intro</div>
+            </div>
 
-    </div>
-    <button id="startBtn" class="button is-large">Click to start</button>
-    <div id="bottomUI" class="card">
-      <header class="card-header ">
-        <p class="card-header-title">Scene one of 5 </p>
-      </header>
-      <div class="card-content fixed-grid has-5-cols">
-        <div class="content grid is-column-gap-2">
-          <button id="backbtn" class="cell button is-white icon is-medium "><i
-              class="fa-solid fa-arrow-left fas fa-lg"></i>
-          </button>
-          <div id="caption-box" class="cell is-col-span-3"> </div>
-          </button><button id="forwardbtn" class="cell button is-white  icon is-medium"><i
-              class="fa-solid fa-arrow-right fas fa-lg "></i></button>
         </div>
-      </div>
-    </div>
 
-  </div>`;
+        <button id="startBtn" class="button is-large">Click to start</button>
+        <div id="bottomUI" class="card">
+            <header class="card-header ">
+                <p class="card-header-title">Scene 1/1</p>
+            </header>
+            <div class="card-content fixed-grid has-5-cols">
+                <div class="content grid is-column-gap-2">
+                    <!-- <button id="backbtn" class="cell button is-white icon is-medium "><i
+              class="fa-solid fa-arrow-left fas fa-lg"></i>
+          </button> -->
+                    <div id="captionBox" class="cell is-col-span-4"> Captions</div>
+                    <button id="restartBtn" class="cell button is-white  icon is-medium"><i
+                            class="fa-solid fa-arrow-rotate-right"></i>
+                    </button>
+                    <!-- <button id="forwardbtn" class="cell button is-white  icon is-medium"><i
+              class="fa-solid fa-arrow-right fas fa-lg "></i></button> -->
+                </div>
+            </div>
+        </div>
+    `;
 
   body.insertAdjacentHTML("beforeend", html);
   document.getElementById("mapBtn").addEventListener("click", () => {
     sound.stop(); // stop resets the playback and stops it
   });
-  updateUI();
+  //updateUI();
 };
 
-const updateUI = (place) => {
-  d;
-};
+const updateUI = (place) => {};
 
 const parseTime = (timeString) => {
   const [m, s] = timeString.split(":");
   return parseFloat(m) * 60 + parseFloat(s);
 };
 
-export const loadCaptions = (place) => {
+const loadCaptions = (place) => {
   const path = locations[place].captionPath;
   let captions = [];
-  fetch(path)
+  return fetch(path)
     .catch((error) => console.log("Error loading VTT file:", error))
     .then((response) => response.text())
     .then((text) => {
@@ -70,8 +72,10 @@ export const loadCaptions = (place) => {
           captions.push(cue);
           i++; // skip caption line
         }
-
-        return captions;
       }
+
+      return captions;
     });
 };
+
+///module.exports = { loadUI, loadCaptions };
