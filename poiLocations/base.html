@@ -65,8 +65,6 @@
                 const currentCaption = captions.find(cue =>
                     currentTime >= cue.start && currentTime <= cue.end
                 );
-
-
                 captionDisplay.innerHTML = currentCaption ? currentCaption.text : "";
             }
         }, 100);
