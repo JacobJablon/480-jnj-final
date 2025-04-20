@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Base</title> 
+    <title>Base</title>
     <!-- A-Frame -->
     <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
     <!-- Pure three.js code that the A-Frame components use for location-based AR -->
@@ -12,6 +12,10 @@
     <!-- AR.js A-Frame components (recommended to use version 3.4.5, rather than master) -->
     <script src='https://raw.githack.com/AR-js-org/AR.js/3.4.5/aframe/build/aframe-ar.js'></script>
 
+    <!-- Howler.js for audio playback -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"
+        integrity="sha512-xi/RZRIF/S0hJ+yJJYuZ5yk6/8pCiRlEXZzoguSMl+vk2i3m6UjUO/WcZ11blRL/O+rnj94JRGwt/CHbc9+6EA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Bulma -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <!-- font awesome -->
@@ -19,32 +23,52 @@
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <link href="./styles/poiLocations.css" rel="stylesheet">
-    <script src="./src/poiLocations.js" type="module"></script>
+    <link href="../styles/poiLocations.css" rel="stylesheet">
+    <script src="../src/poiLocations.js"></script>
 </head>
 
 <body>
+    <div id="UI">
 
-
+    </div>
 </body>
 
-<script>
-    import { loadUI, } from './src/poiLocations.js';
-    const sound = new Howl({
-        src: ['./assetts/script_intro.mp3']
-    });
-    // load captions from JSON file
-    const captions = loadCaptions(0);
+<script type="module">
 
     const init = () => {
+        const sound = new Howl({
+            src: ['../assets/script_intro.mp3']
+        });
+        // load captions from JSON file
+
+        let captions = [];
+        loadCaptions(0).then((captions) => {
+            // console.log(captions);
+
+            // Now you'll see the actual parsed captions
+            setInterval(() => {
+                if (sound.playing()) {
+                    const currentTime = sound.seek();// get current playback time
+                    const currentCaption = captions.find(cue =>
+                        currentTime >= cue.start && currentTime <= cue.end
+                    );
+
+
+                    captionDisplay.innerHTML = currentCaption ? currentCaption.text : "";
+                }
+            }, 100);
+        });
+
 
         // Load the UI
+        let UI = document.querySelector("#UI");
+        loadUI(0, UI);
 
-        loadUI(0);
         // Add onClick events
-        document.getElementById("startBtn").addEventListener("click", () => {
+        let startBtn = document.getElementById("startBtn")
+        startBtn.addEventListener("click", () => {
             sound.play(); // play from the beginning
-            this.style.display = "none";
+            startBtn.style.display = "none";
         });
 
         const captionDisplay = document.getElementById("captionBox");
@@ -59,18 +83,10 @@
 
         });
 
-        setInterval(() => {
-            if (sound.playing()) {
-                const currentTime = sound.seek();// get current playback time
-                const currentCaption = captions.find(cue =>
-                    currentTime >= cue.start && currentTime <= cue.end
-                );
-                captionDisplay.innerHTML = currentCaption ? currentCaption.text : "";
-            }
-        }, 100);
+
     };
 
-
+    window.onload = init;
 
 </script>
 
