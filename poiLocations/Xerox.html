@@ -28,12 +28,50 @@
 </head>
 
 <body>
-
     <a-assets>
         <audio id="script" src="./assetts/script_intro.mp3" preload="auto"></audio>
-        <a-asset-item id="kodak-Tower" src="../assets/xerox-logo/"></a-asset-item>
-        <img id="rocLogo" src="./assetts/roc-logo.png" />
+        <a-asset-item id="xeroxLogo" src="../assets/xerox-logo/xerox.gltf"></a-asset-item>
+        <a-asset-item id="xeroxBuilding" src="../assets/xeroxT/result.gltf"></a-asset-item>
+        <a-asset-item id="paper" src="../assets/paper/scene.gltf"></a-asset-item>
+        <a-asset-item id="xeroxAlto" src="../assets/"></a-asset-item>
+        <a-asset-item id="declienGraph" src="../assets/DeclineG/DeclineG.gltf"></a-asset-item>
+        <img id="haloidImg" src="../assets/haloid.jpg" />
+        <img id="chesterImg" src="../assets/chesterC.jpg" />
+
     </a-assets>
+
+    <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
+
+    <!-- Overall container entity that holds every other entity -->
+    <a-entity id="everything-container" rotation="0 0 0" position="0 0 -20">
+
+        <a-entity id="xeroxL" gltf-model="#xeroxLogo" position="0 0 4" scale="1 1 1"
+            material="transparent: true; opacity: 0"
+            animation__fadein="property: opacity; from: 0; to: 1; dur: 2000; easing: linear; autoplay: false"
+            animation__fadeout="property: text.opacity; from: 1; to: 0; dur: 3000; easing: linear; autoplay: false">
+        </a-entity>
+        <a-entity id="xeroxB" gltf-model="#xeroxBuilding" position="0 0 4" scale="0.01 0.01 0.01"
+            material="transparent: true; opacity: 0"
+            animation__fadein="property: text.opacity; from: 0; to: 1; dur: 2000; easing: linear; autoplay: false"
+            animation__fadeout="property: text.opacity; from: 1; to: 0; dur: 3000; easing: linear; autoplay: false">
+        </a-entity>
+        <a-entity id="paperO" gltf-model="#paper" position="0 0 0" scale="0.02 0.02 0.02"
+            material="transparent: true; opacity: 0"
+            animation__fadein="property: text.opacity; from: 0; to: 1; dur: 2000; easing: linear; autoplay: false"
+            animation__positionout="property: position; from: 0 0 0; to: 0 3 0; dur: 3500; autoplay: true"
+            animation__fadeout="property: text.opacity; from: 1; to: 0; dur: 3000; easing: linear; autoplay: false">
+        </a-entity>
+        <a-entity id="XeroxA" gltf-model="#paper" position="0 0 0" scale="0.02 0.02 0.02"
+            material="transparent: true; opacity: 0"
+            animation__fadein="property: text.opacity; from: 0; to: 1; dur: 2000; easing: linear; autoplay: false"
+            animation__positionout="property: position; from: 0 0 0; to: 0 3 0; dur: 3500; autoplay: true"
+            animation__fadeout="property: text.opacity; from: 1; to: 0; dur: 3000; easing: linear; autoplay: false">
+        </a-entity>
+
+
+        <a-circle src="#rocLogo" radius="2" position="0 0 5" sound="src: #script autoplay: true"></a-circle>
+    </a-entity>
+
 
     <div id="UI">
 

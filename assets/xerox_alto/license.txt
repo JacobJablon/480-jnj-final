@@ -1,0 +1,11 @@
+Model Information:
+* title:	Xerox Alto - Son of Douglas Engelbart - 1973
+* source:	https://sketchfab.com/3d-models/xerox-alto-son-of-douglas-engelbart-1973-fc49263ee9b94ea98caa11c65e663a90
+* author:	museudocomputador (https://sketchfab.com/museudocomputador)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Xerox Alto - Son of Douglas Engelbart - 1973" (https://sketchfab.com/3d-models/xerox-alto-son-of-douglas-engelbart-1973-fc49263ee9b94ea98caa11c65e663a90) by museudocomputador (https://sketchfab.com/museudocomputador) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
