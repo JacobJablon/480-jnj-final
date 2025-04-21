@@ -1,39 +1,34 @@
 const locations = [
-  { Title: "Xerox", captionPath: "../assets/script_intro.vtt" },
+  { title: "Xerox", captionPath: "../assets/script_intro.vtt" },
 ];
 
 const loadUI = (place, parent) => {
   const body = parent;
   const html = `
-  <div id="topUI" class="fixed-grid has-4-cols">
-            <div class="grid is-column-gap-4">
-                <button id="mapBtn" class="cell button mt-2"><span class="icon is-large">
-                        <i class="fa-solid fa-map-location-dot fas fa-lg"></i>
-                    </span></button>
-                <div id="titleBox" class="box cell is-col-span-3" class="cell">Intro</div>
-            </div>
-
+<div id="topUI" class="fixed-grid has-4-cols">
+        <div class="grid is-column-gap-4">
+            <button id="mapBtn" class="cell button mt-2"><span class="icon is-large">
+                    <i class="fa-solid fa-map-location-dot fas fa-lg"></i>
+                </span></button>
+            <div id="titleBox" class="box cell is-col-span-3" class="cell">${locations[place].title}</div>
         </div>
 
-        <button id="startBtn" class="button is-large">Click to start</button>
-        <div id="bottomUI" class="card">
-            <header class="card-header ">
-                <p class="card-header-title">Scene 1/1</p>
-            </header>
-            <div class="card-content fixed-grid has-5-cols">
-                <div class="content grid is-column-gap-2">
-                    <!-- <button id="backbtn" class="cell button is-white icon is-medium "><i
-              class="fa-solid fa-arrow-left fas fa-lg"></i>
-          </button> -->
-                    <div id="captionBox" class="cell is-col-span-4"> Captions</div>
-                    <button id="restartBtn" class="cell button is-white  icon is-medium"><i
-                            class="fa-solid fa-arrow-rotate-right"></i>
-                    </button>
-                    <!-- <button id="forwardbtn" class="cell button is-white  icon is-medium"><i
-              class="fa-solid fa-arrow-right fas fa-lg "></i></button> -->
-                </div>
+    </div>
+
+    <button id="startBtn" class="button is-large">Click to start</button>
+    <div id="bottomUI" class="card">
+        <header class="card-header ">
+            <p class="card-header-title">Scene 1/1</p>
+        </header>
+        <div class="card-content fixed-grid has-5-cols">
+            <div class="content grid is-column-gap-2">
+                <div id="captionBox" class="cell is-col-span-4"> Captions</div>
+                <button id="restartBtn" class="cell button is-white  icon is-medium"><i
+                        class="fa-solid fa-arrow-rotate-right"></i>
+                </button>
             </div>
         </div>
+    </div>
     `;
 
   body.insertAdjacentHTML("beforeend", html);
