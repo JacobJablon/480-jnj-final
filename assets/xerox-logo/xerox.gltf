@@ -1,0 +1,280 @@
+{
+    "asset": {
+        "version": "2.0",
+        "generator": "Open Asset Import Library (assimp v5.4.0)"
+    },
+    "extensionsUsed": [
+        "KHR_materials_volume",
+        "FB_ngon_encoding"
+    ],
+    "accessors": [
+        {
+            "bufferView": 0,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 174,
+            "type": "VEC3",
+            "max": [
+                10.536298751831055,
+                9.842519760131836,
+                2.3228347301483154
+            ],
+            "min": [
+                0.004805917851626873,
+                0.0,
+                0.0
+            ]
+        },
+        {
+            "bufferView": 1,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 174,
+            "type": "VEC3",
+            "max": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "min": [
+                -1.0,
+                -1.0,
+                -1.0
+            ]
+        },
+        {
+            "bufferView": 2,
+            "byteOffset": 0,
+            "componentType": 5125,
+            "count": 324,
+            "type": "SCALAR",
+            "max": [
+                173
+            ],
+            "min": [
+                0
+            ]
+        },
+        {
+            "bufferView": 3,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 120,
+            "type": "VEC3",
+            "max": [
+                10.536298751831055,
+                9.842519760131836,
+                2.3228347301483154
+            ],
+            "min": [
+                0.004805917851626873,
+                0.0,
+                0.0
+            ]
+        },
+        {
+            "bufferView": 4,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 120,
+            "type": "VEC3",
+            "max": [
+                1.0,
+                1.0,
+                0.0
+            ],
+            "min": [
+                -1.0,
+                -1.0,
+                -1.0
+            ]
+        },
+        {
+            "bufferView": 5,
+            "byteOffset": 0,
+            "componentType": 5125,
+            "count": 240,
+            "type": "SCALAR",
+            "max": [
+                119
+            ],
+            "min": [
+                0
+            ]
+        }
+    ],
+    "buffers": [
+        {
+            "byteLength": 9312,
+            "uri": "xerox (1)_0.bin"
+        }
+    ],
+    "bufferViews": [
+        {
+            "buffer": 0,
+            "byteOffset": 0,
+            "byteLength": 2088,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteOffset": 2088,
+            "byteLength": 2088,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteOffset": 4176,
+            "byteLength": 1296,
+            "target": 34963
+        },
+        {
+            "buffer": 0,
+            "byteOffset": 5472,
+            "byteLength": 1440,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteOffset": 6912,
+            "byteLength": 1440,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteOffset": 8352,
+            "byteLength": 960,
+            "target": 34963
+        }
+    ],
+    "materials": [
+        {
+            "name": "Color_A06",
+            "pbrMetallicRoughness": {
+                "baseColorFactor": [
+                    0.800000011920929,
+                    0.0,
+                    0.0,
+                    1.0
+                ],
+                "metallicFactor": 0.800000011920929
+            },
+            "doubleSided": true
+        }
+    ],
+    "meshes": [
+        {
+            "name": "meshes[0]",
+            "primitives": [
+                {
+                    "mode": 4,
+                    "material": 0,
+                    "indices": 2,
+                    "attributes": {
+                        "POSITION": 0,
+                        "NORMAL": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "meshes[1]",
+            "primitives": [
+                {
+                    "mode": 4,
+                    "material": 0,
+                    "indices": 5,
+                    "attributes": {
+                        "POSITION": 3,
+                        "NORMAL": 4
+                    }
+                }
+            ]
+        }
+    ],
+    "nodes": [
+        {
+            "name": "xerox (1)",
+            "children": [
+                1
+            ]
+        },
+        {
+            "name": "Root_Node",
+            "matrix": [
+                0.02539999969303608,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                5.639932896936113e-18,
+                -0.02539999969303608,
+                0.0,
+                0.0,
+                0.02539999969303608,
+                5.639932896936113e-18,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "children": [
+                2
+            ],
+            "extras": {
+                "name": "Root Node"
+            }
+        },
+        {
+            "name": "X",
+            "matrix": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                -3.774758283725532e-14,
+                1.0,
+                0.0,
+                0.0,
+                -1.0,
+                -3.774758283725532e-14,
+                0.0,
+                48.11098861694336,
+                19.8996524810791,
+                1.2007874250411987,
+                1.0
+            ],
+            "children": [
+                3
+            ],
+            "extras": {
+                "name": "X"
+            }
+        },
+        {
+            "name": "nodes[2]",
+            "children": [
+                4,
+                5
+            ]
+        },
+        {
+            "name": "mesh_0",
+            "mesh": 0
+        },
+        {
+            "name": "mesh_0_1",
+            "mesh": 1
+        }
+    ],
+    "scenes": [
+        {
+            "nodes": [
+                0
+            ]
+        }
+    ],
+    "scene": 0
+}

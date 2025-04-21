@@ -37,9 +37,7 @@ const loadUI = (place, parent) => {
     `;
 
   body.insertAdjacentHTML("beforeend", html);
-  document.getElementById("mapBtn").addEventListener("click", () => {
-    sound.stop(); // stop resets the playback and stops it
-  });
+
   //updateUI();
 };
 
