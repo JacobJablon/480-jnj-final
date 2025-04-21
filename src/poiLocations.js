@@ -12,8 +12,7 @@ const loadUI = (place, parent) => {
                 </span></button>
             <div id="titleBox" class="box cell is-col-span-3" class="cell">${locations[place].title}</div>
         </div>
-
-    </div>
+ </div>
 
     <button id="startBtn" class="button is-large">Click to start</button>
     <div id="bottomUI" class="card">
