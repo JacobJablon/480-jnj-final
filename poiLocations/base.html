@@ -97,13 +97,14 @@
             const timeline = buildTimeline();
 
             // // Play on load
-            // tl.play();
+
 
             // Add onClick events
             let startBtn = document.getElementById("startBtn")
             startBtn.addEventListener("click", () => {
                 sound.play(); // play from the beginning
                 startBtn.style.display = "none";
+                timeline.play();
             });
 
             const captionDisplay = document.getElementById("captionBox");

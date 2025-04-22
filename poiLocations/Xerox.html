@@ -54,40 +54,41 @@
 
         <!-- Overall container entity that holds every other entity -->
         <a-entity id="everything-container" rotation="0 0 0" position="0 0 -20">
-            <a-entity id="container1"
-                animation__fadeout="property: text.opacity; from: 1; to: 0; dur: 3000; easing: linear; autoplay: false">
+            <a-entity id="container1" visible="false">
                 <a-entity id="kT" gltf-model="#kodak-Tower" position="0 0 4" scale="1 1 1"
                     material="transparent: true; opacity: 0.5"
                     animation__fadein="property: opacity; from: 0; to: 1; dur: 2000; easing: linear; autoplay: false"
-                    animation__positionout="property: position; from: 0 0 4; to: -3 1 4; dur: 3500; autoplay: true"
+                    animation__positionout="property: position; from: 0 0 4; to: -3 1 4; dur: 3500; autoplay: false"
                     animation__fadeout="property: opacity; from: 1; to: 0; dur: 3000; easing: linear; autoplay: false">
                 </a-entity>
                 <a-entity id="xT" gltf-model="#xerox-Tower" position="0 0 4" scale="0.01 0.01 0.01"
                     material="transparent: true; opacity: 0"
                     animation__fadein="property: opacity; from: 0; to: 1; dur: 2000; easing: linear; autoplay: false"
-                    animation__positionout="property: position; from: 0 0 -4; to: 3 1 4; dur: 3500; autoplay: true"
+                    animation__positionout="property: position; from: 0 0 -4; to: 3 1 4; dur: 3500; autoplay: false"
                     animation__fadeout="property: opacity; from: 1; to: 0; dur: 3000; easing: linear; autoplay: false">
                 </a-entity>
                 <a-entity id="blT" gltf-model="#bal-Tower" position="0 0 0" scale="0.02 0.02 0.02"
                     material="transparent: true; opacity: 0"
                     animation__fadein="property: opacity; from: 0; to: 1; dur: 2000; easing: linear; autoplay: false"
-                    animation__positionout="property: position; from: 0 0 0; to: 0 3 0; dur: 3500; autoplay: true"
+                    animation__positionout="property: position; from: 0 0 0; to: 0 3 0; dur: 3500; autoplay: false"
                     animation__fadeout="property: opacity; from: 1; to: 0; dur: 3000; easing: linear; autoplay: false">
                 </a-entity>
-                <a-image src="#jnjlogo" height="5" width="5" position="0 0 5"></<a-image>
+                <a-image id="logoImg" src="#jnjlogo" height="5" width="5" position="0 0 5"></<a-image>
 
             </a-entity>
 
-            <a-entity>
-                <a-image src="#haloidImg" material="" geometry="" rotation="0 -45 0"
-                    position="1.08406 0 1.08406"></a-image>
-                <a-image src="#chesterImg" material="" geometry="" rotation="0 45 0"
-                    scale="3.71598 3.716 3.71598"></a-image>
+            <a-entity id="container2" visible="false">
+                <a-image id="chester-img" src="#chesterImg" visible="false" geometry="" rotation="0 20 0"
+                    scale="3.716 3.716 3.716" material="" position="-2.57364 0 5.08327"></a-image>
+                <a-image id="haloid-img" src="#haloidImg" visible="false" geometry="" rotation="0 -20 0"
+                    scale="3.716 3.716 3.716" position="1.54013 -0.11264 5" material=""></a-image>
+
+
             </a-entity>
 
 
             <a-entity>
-                <a-entity id="xeroxLogo" gltf-model="#xeroxLogo" position="0 0 4" scale="0.01 0.01 0.01"
+                <a-entity id="xerox-Logo" gltf-model="#xeroxLogo" position="0 0 4" scale="0.01 0.01 0.01"
                     material="transparent: true; opacity: 0"
                     animation__fadein="property: text.opacity; from: 0; to: 1; dur: 2000; easing: linear; autoplay: false"
                     animation__fadeout="property: text.opacity; from: 1; to: 0; dur: 3000; easing: linear; autoplay: false">
@@ -104,46 +105,29 @@
                     animation__positionout="property: position; from: 0 0 0; to: 0 3 0; dur: 3500; autoplay: false"
                     animation__fadeout="property: text.opacity; from: 1; to: 0; dur: 3000; easing: linear; autoplay: false">
                 </a-entity>
-                <a-entity id="xeroxL" gltf-model="#xeroxLogo" position="0 0 4" scale="1 1 1"
+
+                <a-entity id="xerox-Alto" gltf-model="#xeroxAlto" position="0 0 0" scale="1 1 1"
                     material="transparent: true; opacity: 0"
-                    animation__fadein="property: opacity; from: 0; to: 1; dur: 2000; easing: linear; autoplay: false"
+                    animation__fadein="property: text.opacity; from: 0; to: 1; dur: 2000; easing: linear; autoplay: false"
+                    animation__positionout="property: position; from: 0 0 0; to: 0 3 0; dur: 3500; autoplay: false"
                     animation__fadeout="property: text.opacity; from: 1; to: 0; dur: 3000; easing: linear; autoplay: false">
                 </a-entity>
-                <a-entity>
-                    <a-entity id="xeroxB" gltf-model="#xeroxBuilding" position="0 0 4" scale="0.01 0.01 0.01"
-                        material="transparent: true; opacity: 0"
-                        animation__fadein="property: text.opacity; from: 0; to: 1; dur: 2000; easing: linear; autoplay: false"
-                        animation__fadeout="property: text.opacity; from: 1; to: 0; dur: 3000; easing: linear; autoplay: false">
-                    </a-entity>
-                    <a-entity id="paperObj" gltf-model="#paper" position="0 0 0" scale="0.02 0.02 0.02"
-                        material="transparent: true; opacity: 0"
-                        animation__fadein="property: text.opacity; from: 0; to: 1; dur: 2000; easing: linear; autoplay: false"
-                        animation__positionout="property: position; from: 0 0 0; to: 0 3 0; dur: 3500; autoplay: true"
-                        animation__fadeout="property: text.opacity; from: 1; to: 0; dur: 3000; easing: linear; autoplay: false">
-                    </a-entity>
-
-                    <a-entity id="xerox-Alto" gltf-model="#xeroxAlto" position="0 0 0" scale="1 1 1"
-                        material="transparent: true; opacity: 0"
-                        animation__fadein="property: text.opacity; from: 0; to: 1; dur: 2000; easing: linear; autoplay: false"
-                        animation__positionout="property: position; from: 0 0 0; to: 0 3 0; dur: 3500; autoplay: false"
-                        animation__fadeout="property: text.opacity; from: 1; to: 0; dur: 3000; easing: linear; autoplay: false">
-                    </a-entity>
-                    <!-- <a-entity id="explosion" gltf-model="#expl" position="0 0 0" scale="0.02 0.02 0.02"
+                <!-- <a-entity id="explosion" gltf-model="#expl" position="0 0 0" scale="0.02 0.02 0.02"
                 material="transparent: true; opacity: 0"
                 animation__fadein="property: text.opacity; from: 0; to: 1; dur: 2000; easing: linear; autoplay: false"
                 animation__positionout="property: position; from: 0 0 0; to: 0 3 0; dur: 3500; autoplay: true"
                 animation__fadeout="property: text.opacity; from: 1; to: 0; dur: 3000; easing: linear; autoplay: false">
             </a-entity> -->
-                </a-entity>
-                <a-entity id="declineGraph" gltf-model="../assets/DeclineG/DeclineG.gltf" position=""
-                    scale="0.02 0.02 0.02" material="transparent: true; opacity: 0"
-                    animation__fadein="property: text.opacity; from: 0; to: 1; dur: 2000; easing: linear; autoplay: false"
-                    animation__positionout="property: position; from: 0 0 0; to: 0 3 0; dur: 3500; autoplay: false"
-                    animation__fadeout="property: text.opacity; from: 1; to: 0; dur: 3000; easing: linear; autoplay: false"
-                    rotation="90 0 0">
-                </a-entity>
-
             </a-entity>
+            <a-entity id="declineGraph" gltf-model="../assets/DeclineG/DeclineG.gltf" position="" scale="0.02 0.02 0.02"
+                material="transparent: true; opacity: 0"
+                animation__fadein="property: text.opacity; from: 0; to: 1; dur: 2000; easing: linear; autoplay: false"
+                animation__positionout="property: position; from: 0 0 0; to: 0 3 0; dur: 3500; autoplay: false"
+                animation__fadeout="property: text.opacity; from: 1; to: 0; dur: 3000; easing: linear; autoplay: false"
+                rotation="90 0 0">
+            </a-entity>
+
+        </a-entity>
     </a-scene>
 
     <div id="UI">
@@ -158,6 +142,59 @@
 
     window.onload = () => {
         document.querySelector('a-scene').setAttribute('timeline-control', '');
+    }
+
+    const buildTimeline = () => {
+        const tl = gsap.timeline({ paused: true });
+
+        const container1 = document.querySelector("#container1");
+        const logoImg = document.querySelector("#logoImg");
+        const kt = document.querySelector("#kT");
+        const xt = document.querySelector("#xT");
+        const blt = document.querySelector("#blT");
+        const haloidImg = document.querySelector("#haloid-img");
+        const chesterImg = document.querySelector("#chester-img");
+        const paperObj = document.querySelector("#paperObj");
+        const xeroxLogo = document.querySelector("#xerox-Logo");
+        const xeroxB = document.querySelector("#xeroxB");
+        const declineGraph = document.querySelector("#declineGraph");
+        const container2 = document.querySelector("#container2");
+
+
+
+        tl.call(() => {
+            container1.setAttribute('visible', true);
+        }, null, 0) // 1 second later
+
+            .to(kt.object3D.position, { x: -3, y: 2, duration: 1, ease: "power2.out" }, "+=1")
+            .to(xt.object3D.position, { x: 3, y: 2, duration: 1, ease: "power2.out" }, "<")
+            .to(blt.object3D.position, { y: 3, duration: 2, ease: "power2.out" }, "<")
+            .call(() => {
+                container1.setAttribute('visible', false);
+            }, null, ">+=3")
+            .to(xeroxLogo.object3D.scale, {
+                x: 4, y: 4, z: 4, duration: 2, ease: "power2.out"
+            }, "<")
+
+            // section 2
+            .call(() => {
+                container2.setAttribute('visible', true);
+            }, null, ">") // 1 second later
+            .call(() => {
+                chesterImg.setAttribute('visible', true);
+            }, null, ">+=3") // 1 second later
+            .call(() => {
+                haloidImg.setAttribute('visible', true);
+            }, null, ">+=3") // 1 second later
+            .call(() => {
+                container2.setAttribute('visible', false);
+            }, null, "+=3")
+
+
+
+        // 1 second later
+
+        return tl;
     }
 
 
@@ -193,12 +230,14 @@
 
             //Load the time line
 
-            const tl = gsap.timeline({ paused: true });
 
+
+            const timeline = buildTimeline();
             // Add onClick events
             let startBtn = document.getElementById("startBtn")
             startBtn.addEventListener("click", () => {
-                sound.play(); // play from the beginning
+                sound.play();
+                timeline.play(); // play from the beginning
                 startBtn.style.display = "none";
             });
 
@@ -207,23 +246,14 @@
             document.getElementById("restartBtn").addEventListener("click", () => {
                 sound.stop(); // stop resets the playback and stops it
                 sound.play();
-                tl.restart();// play from the beginning
+                timeline.restart();// play from the beginning
             });
 
             document.getElementById("mapBtn").addEventListener("click", () => {
                 sound.stop(); // stop resets the playback and stops it
-                tl.stop(); // stop the timeline
+                timeline.stop(); // stop the timeline
 
             });
-
-            // Animate all three boxes at the same time (same start point)
-            // tl.to();
-
-            // // Play on load
-            // tl.play();
-
-
-
 
         }
     });
