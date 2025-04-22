@@ -75,7 +75,7 @@ const drawRoute = () => {
     utils.setupMap(route, zoom, userCoords);
 
     //redraw map every 10 sec to show movement of user
-    setTimeout(drawRoute, 10000);
+    setTimeout(drawRoute, 60000);
 }
 
 const setupUI = () => {
