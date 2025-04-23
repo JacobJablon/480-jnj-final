@@ -55,22 +55,28 @@
         <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
 
         <!-- Overall container entity that holds every other entity -->
-        <a-entity id="everything-container" rotation="0 0 0" position="0 0 -20">
+        <a-entity id="everything-container" rotation="0 0 0" position="0 0 -15">
             <a-entity id="container1" visible="false">
-                <a-entity id="kT" gltf-model="#kodak-Tower" position="0 0 4" scale="1 1 1"
-                    material="transparent: true; opacity: 0.5">
-                    <a-entity position="0 2 0" text="value:Kodak width:4 align:center ">
+                <a-entity id="kT">
+                    <a-entity gltf-model="#kodak-Tower" position="0 0 0" scale="1 1 1"
+                        material="transparent: true; opacity: 0.5">
+                    </a-entity>
+                    <a-entity position="0 2.3 0" text="value:Kodak; width:10; align:center ">
                     </a-entity>
                 </a-entity>
-                <a-entity id="xT" gltf-model="#xerox-Tower" position="0 0 4" scale="0.01 0.01 0.01"
-                    material="transparent: true; opacity: 0">
-                    <a-entity position="0 2 0" text="value:Xerox width:4 align:center ">
+                <a-entity id="xT">
+                    <a-entity gltf-model="#xerox-Tower" position="0 0 0" scale="0.01 0.01 0.01"
+                        material="transparent: true; opacity: 0">
+                    </a-entity>
+                    <a-entity position="0 2 0" text="value:Xerox; width:10; align:center ">
                     </a-entity>
 
                 </a-entity>
-                <a-entity id="blT" gltf-model="#bal-Tower" position="0 0 0" scale="0.02 0.02 0.02"
-                    material="transparent: true; opacity: 0">
-                    <a-entity position="0 2 0" text="value:Bauch&Lomb width:4 align:center ">
+                <a-entity id="blT">
+                    <a-entity gltf-model="#bal-Tower" position="0 0 0" scale="0.02 0.02 0.02"
+                        material="transparent: true; opacity: 0">
+                    </a-entity>
+                    <a-entity position="0 2.5 0" text="value:Bauch&Lomb; width:10; align:center ">
                     </a-entity>
 
                 </a-entity>
