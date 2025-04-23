@@ -11,7 +11,7 @@
     <script src='https://raw.githack.com/AR-js-org/AR.js/3.4.5/three.js/build/ar-threex-location-only.js'></script>
     <!-- AR.js A-Frame components (recommended to use version 3.4.5, rather than master) -->
     <script src='https://raw.githack.com/AR-js-org/AR.js/3.4.5/aframe/build/aframe-ar.js'></script>
-    <!-- Animation Components -->+
+    <!-- Animation Components -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
 
@@ -39,8 +39,10 @@
             <a-asset-item id="xerox-Tower" src="../assets/xeroxT/result.gltf"></a-asset-item>
             <a-asset-item id="paper" src="../assets/paper/scene.gltf"></a-asset-item>
             <a-asset-item id="xeroxAlto" src="../assets/xerox_alto/scene.gltf"></a-asset-item>
-            <a-asset-item id="declienGraph" src="../assets/DeclineG/DeclineG.gltf"></a-asset-item>
+            <a-asset-item id="declineGraph" src="../assets/DeclineG/DeclineG.gltf"></a-asset-item>
             <a-asset-item id="kodak-Tower" src="../assets/kodakT/result.gltf"></a-asset-item>
+            <a-asset-item id="bal-Tower" src="../assets/bLHeadQuarters/result.gltf"></a-asset-item>
+            <a-asset-item id="bal-Tower" src="../assets/bLHeadQuarters/result.gltf"></a-asset-item>
             <a-asset-item id="bal-Tower" src="../assets/bLHeadQuarters/result.gltf"></a-asset-item>
             <a-asset-item id="bal-Tower" src="../assets/bLHeadQuarters/result.gltf"></a-asset-item>
             <!-- <a-asset-item id="expl" src="../assets/explosion/scene.gltf"></a-asset-item> -->
@@ -56,22 +58,21 @@
         <a-entity id="everything-container" rotation="0 0 0" position="0 0 -20">
             <a-entity id="container1" visible="false">
                 <a-entity id="kT" gltf-model="#kodak-Tower" position="0 0 4" scale="1 1 1"
-                    material="transparent: true; opacity: 0.5"
-                    animation__fadein="property: opacity; from: 0; to: 1; dur: 2000; easing: linear; autoplay: false"
-                    animation__positionout="property: position; from: 0 0 4; to: -3 1 4; dur: 3500; autoplay: false"
-                    animation__fadeout="property: opacity; from: 1; to: 0; dur: 3000; easing: linear; autoplay: false">
+                    material="transparent: true; opacity: 0.5">
+                    <a-entity position="0 2 0" text="value:Kodak width:4 align:center ">
+                    </a-entity>
                 </a-entity>
                 <a-entity id="xT" gltf-model="#xerox-Tower" position="0 0 4" scale="0.01 0.01 0.01"
-                    material="transparent: true; opacity: 0"
-                    animation__fadein="property: opacity; from: 0; to: 1; dur: 2000; easing: linear; autoplay: false"
-                    animation__positionout="property: position; from: 0 0 -4; to: 3 1 4; dur: 3500; autoplay: false"
-                    animation__fadeout="property: opacity; from: 1; to: 0; dur: 3000; easing: linear; autoplay: false">
+                    material="transparent: true; opacity: 0">
+                    <a-entity position="0 2 0" text="value:Xerox width:4 align:center ">
+                    </a-entity>
+
                 </a-entity>
                 <a-entity id="blT" gltf-model="#bal-Tower" position="0 0 0" scale="0.02 0.02 0.02"
-                    material="transparent: true; opacity: 0"
-                    animation__fadein="property: opacity; from: 0; to: 1; dur: 2000; easing: linear; autoplay: false"
-                    animation__positionout="property: position; from: 0 0 0; to: 0 3 0; dur: 3500; autoplay: false"
-                    animation__fadeout="property: opacity; from: 1; to: 0; dur: 3000; easing: linear; autoplay: false">
+                    material="transparent: true; opacity: 0">
+                    <a-entity position="0 2 0" text="value:Bauch&Lomb width:4 align:center ">
+                    </a-entity>
+
                 </a-entity>
                 <a-image id="logoImg" src="#jnjlogo" height="5" width="5" position="0 0 5"></<a-image>
 
@@ -89,28 +90,18 @@
 
             <a-entity>
                 <a-entity id="xerox-Logo" gltf-model="#xeroxLogo" position="0 0 4" scale="0.01 0.01 0.01"
-                    material="transparent: true; opacity: 0"
-                    animation__fadein="property: text.opacity; from: 0; to: 1; dur: 2000; easing: linear; autoplay: false"
-                    animation__fadeout="property: text.opacity; from: 1; to: 0; dur: 3000; easing: linear; autoplay: false">
+                    material="transparent: true; opacity: 0">
                 </a-entity>
 
                 <a-entity id="xeroxB" gltf-model="#xerox-Tower" position="0 0 4" scale="0.01 0.01 0.01"
-                    material="transparent: true; opacity: 0"
-                    animation__fadein="property: text.opacity; from: 0; to: 1; dur: 2000; easing: linear; autoplay: false"
-                    animation__fadeout="property: text.opacity; from: 1; to: 0; dur: 3000; easing: linear; autoplay: false">
+                    material="transparent: true; opacity: 0">
                 </a-entity>
                 <a-entity id="paperObj" gltf-model="#paper" position="0 0 0" scale="0.02 0.02 0.02"
-                    material="transparent: true; opacity: 0"
-                    animation__fadein="property: text.opacity; from: 0; to: 1; dur: 2000; easing: linear; autoplay: false"
-                    animation__positionout="property: position; from: 0 0 0; to: 0 3 0; dur: 3500; autoplay: false"
-                    animation__fadeout="property: text.opacity; from: 1; to: 0; dur: 3000; easing: linear; autoplay: false">
+                    material="transparent: true; opacity: 0">
                 </a-entity>
 
                 <a-entity id="xerox-Alto" gltf-model="#xeroxAlto" position="0 0 0" scale="1 1 1"
-                    material="transparent: true; opacity: 0"
-                    animation__fadein="property: text.opacity; from: 0; to: 1; dur: 2000; easing: linear; autoplay: false"
-                    animation__positionout="property: position; from: 0 0 0; to: 0 3 0; dur: 3500; autoplay: false"
-                    animation__fadeout="property: text.opacity; from: 1; to: 0; dur: 3000; easing: linear; autoplay: false">
+                    material="transparent: true; opacity: 0">
                 </a-entity>
                 <!-- <a-entity id="explosion" gltf-model="#expl" position="0 0 0" scale="0.02 0.02 0.02"
                 material="transparent: true; opacity: 0"
@@ -119,12 +110,8 @@
                 animation__fadeout="property: text.opacity; from: 1; to: 0; dur: 3000; easing: linear; autoplay: false">
             </a-entity> -->
             </a-entity>
-            <a-entity id="declineGraph" gltf-model="../assets/DeclineG/DeclineG.gltf" position="" scale="0.02 0.02 0.02"
-                material="transparent: true; opacity: 0"
-                animation__fadein="property: text.opacity; from: 0; to: 1; dur: 2000; easing: linear; autoplay: false"
-                animation__positionout="property: position; from: 0 0 0; to: 0 3 0; dur: 3500; autoplay: false"
-                animation__fadeout="property: text.opacity; from: 1; to: 0; dur: 3000; easing: linear; autoplay: false"
-                rotation="90 0 0">
+            <a-entity id="decline-Graph" gltf-model="#declineGraph" position="" scale="0.02 0.02 0.02"
+                material="transparent: true; opacity: 0" rotation="90 0 0">
             </a-entity>
 
         </a-entity>
@@ -157,7 +144,7 @@
         const paperObj = document.querySelector("#paperObj");
         const xeroxLogo = document.querySelector("#xerox-Logo");
         const xeroxB = document.querySelector("#xeroxB");
-        const declineGraph = document.querySelector("#declineGraph");
+        const declineGraph = document.querySelector("#decline-Graph");
         const container2 = document.querySelector("#container2");
 
 
@@ -166,7 +153,7 @@
             container1.setAttribute('visible', true);
         }, null, 0) // 1 second later
 
-            .to(kt.object3D.position, { x: -3, y: 2, duration: 1, ease: "power2.out" }, "+=1")
+            .to(kt.object3D.position, { x: -3, y: 2, duration: 1, ease: "power2.out" }, ">+=1")
             .to(xt.object3D.position, { x: 3, y: 2, duration: 1, ease: "power2.out" }, "<")
             .to(blt.object3D.position, { y: 3, duration: 2, ease: "power2.out" }, "<")
             .call(() => {
@@ -189,7 +176,15 @@
             .call(() => {
                 container2.setAttribute('visible', false);
             }, null, "+=3")
-
+            .call(() => {
+                xeroxB.setAttribute('visible', true);
+            }, null, ">")
+            // .call(() => {
+            //     //paper swirl function
+            // }, null, ">")
+            .call(() => {
+                declineGraph.setAttribute('visible', true);
+            }, null, ">")
 
 
         // 1 second later
@@ -200,12 +195,16 @@
 
     AFRAME.registerComponent('timeline-control', {
         init: function () {
+
+            //load sound for scene
             const sound = new Howl({
                 src: ['../assets/script_intro.mp3']
             });
-            // load captions from JSON file
 
+
+            // load captions from JSON file
             let captions = [];
+            //change for each scene
             loadCaptions(0).then((captions) => {
                 // console.log(captions);
 
@@ -216,7 +215,6 @@
                         const currentCaption = captions.find(cue =>
                             currentTime >= cue.start && currentTime <= cue.end
                         );
-
 
                         captionDisplay.innerHTML = currentCaption ? currentCaption.text : "";
                     }
@@ -229,10 +227,8 @@
             loadUI(0, UI);
 
             //Load the time line
-
-
-
             const timeline = buildTimeline();
+
             // Add onClick events
             let startBtn = document.getElementById("startBtn")
             startBtn.addEventListener("click", () => {
