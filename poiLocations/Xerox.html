@@ -68,7 +68,7 @@
                     <a-entity gltf-model="#xerox-Tower" position="0 0 3" scale="0.01 0.01 0.01"
                         material="transparent: true; opacity: 0">
                     </a-entity>
-                    <a-entity position="0 2 0" text="value:Xerox; width:10; align:center ">
+                    <a-entity position="0 2.5 0" text="value:Xerox; width:10; align:center ">
                     </a-entity>
 
                 </a-entity>
@@ -84,7 +84,7 @@
 
             </a-entity>
 
-            <a-entity id="container2" visible="false">
+            <a-entity id="container2" visible="false" position="0 3 0">
                 <a-image id="chester-img" src="#chesterImg" visible="false" geometry="" rotation="0 20 0"
                     scale="3.716 3.716 3.716" material="" position="-2.57364 0 5.08327"></a-image>
                 <a-image id="haloid-img" src="#haloidImg" visible="false" geometry="" rotation="0 -20 0"
@@ -95,7 +95,7 @@
 
 
             <a-entity>
-                <a-entity id="xerox-Logo" gltf-model="#xeroxLogo" position="-8 0 0" scale="0.01 0.01 0.01"
+                <a-entity id="xerox-Logo" gltf-model="#xeroxLogo" position="-15 0 0" scale="0.01 0.01 0.01"
                     material="transparent: true; opacity: 0">
                 </a-entity>
 
@@ -105,7 +105,7 @@
                 <!-- <a-entity id="paperObj" gltf-model="#paper" position="0 0 0" scale="0.02 0.02 0.02"
                     material="transparent: true; opacity: 0">
                 </a-entity> -->
-                <a-entity id="paper-container" position="0 -3 5" scale="0.1 0.1 0.1"
+                <a-entity id="paper-container" position="0 -3 2" scale="0.1 0.1 0.1"
                     animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear">
                 </a-entity>
 
@@ -163,41 +163,41 @@
         const xeroxAlto = document.querySelector("#xerox-Alto");
 
         // At the next step in the timeline, the animation function will be called
-        // tl.call(() => {
-        //     container1.setAttribute('visible', true);
-        // }, null, 0) // 1 second later
+        tl.call(() => {
+            container1.setAttribute('visible', true);
+        }, null, 0) // 1 second later
 
-        //     .to(kt.object3D.position, { x: -3, y: 2, duration: 3, ease: "power1.out" }, ">+=10")
-        //     .to(blt.object3D.position, { x: 3, y: 2, duration: 3, ease: "power1.out" }, "<")
-        //     .to(xt.object3D.position, { y: 3, duration: 3, ease: "power1.out" }, "<")
-        //     .call(() => {
-        //         container1.setAttribute('visible', false);
-        //     }, null, ">+=25")
-        tl.to(xeroxLogo.object3D.scale, {
-            x: 8, y: 8, z: 8, duration: 3, ease: "elastic.out"
-        }, "+2")
+            .to(kt.object3D.position, { x: -3, y: 2, duration: 3, ease: "power1.out" }, ">+=10")
+            .to(blt.object3D.position, { x: 3, y: 2, duration: 3, ease: "power1.out" }, "<")
+            .to(xt.object3D.position, { y: 3, duration: 3, ease: "power1.out" }, "<")
+            .call(() => {
+                container1.setAttribute('visible', false);
+            }, null, 31)
+            .to(xeroxLogo.object3D.scale, {
+                x: 10, y: 10, z: 10, duration: 3, ease: "elastic.out"
+            }, ">")
 
             .to(xeroxLogo.object3D.scale, {
                 x: 0.1, y: 0.1, z: 0.1, duration: 5, ease: "linear"
-            }, ">+2")// section 2
+            }, 48)// section 2
             .call(() => {
                 container2.setAttribute('visible', true);
-            }, null, ">+10")
+            }, null, ">")
             // 1 second later
             .call(() => {
                 chesterImg.setAttribute('visible', true);
-            }, null, ">") // 1 second later
+            }, null, 55) // 1 second later
             .call(() => {
                 haloidImg.setAttribute('visible', true);
-            }, null, ">+=10") // 1 second later
+            }, null, ">+=15") // 1 second later
             .call(() => {
                 container2.setAttribute('visible', false);
-            }, null, ">+=10")
+            }, null, ">+=8")
             .call(() => {
                 xeroxB.setAttribute('visible', true);
             }, null, ">")
             .call(() => {
-                for (let i = 0; i < 30; i++) {
+                for (let i = 0; i < 40; i++) {
 
                     let coordX = Math.random() < 0.5 ? Math.round(Math.random() * 10) : Math.round(Math.random() * -10);
                     let coordZ = Math.random() < 0.5 ? Math.round(Math.random() * 10) : Math.round(Math.random() * -10);
@@ -211,7 +211,7 @@
                 scale="1 1 1"
                 rotation="90 0 0"
                 position="${coordX} ${coordY} ${coordZ}"
-                animation="property: rotation; to: 90 360 0; loop: true; dur: ${duration}; easing: linear">
+                animation="property: rotation; to: 90 360 0; loop: true; dur: ${duration}; easing: easeInExpo">
             </a-entity>
             `;
 
@@ -227,6 +227,7 @@
                 paperContainer.setAttribute('visible', false);
             }, null, ">+8")
             .call(() => {
+                //call explosion
                 xeroxAlto.setAttribute('visible', false);
             }, null, ">+15")
             .call(() => {
@@ -245,19 +246,10 @@
 
 
 
-            // const sound = new Howl({
-            //     src: ["../audio/Introduction.mp3"]
-            //     ,
-            //     volume: 1.0,
-            //     onend: function () {
-            //         // Play the next sound after the first one ends
-            //         sound2.play();
-            //     }
-            // });
+
 
             const sound = new Howl({
-                src: ["../audio/Xerox.mp3"],
-                volume: 1.0,
+                src: ["../audio/Introduction_Xerox.mp3"],
 
             });
             // load captions from JSON file
@@ -280,11 +272,12 @@
 
 
             // Load the UI
-            let UI = document.querySelector("#UI");
-            loadUI(0, UI);
 
             //Load the time line
             const timeline = buildTimeline();
+
+            let UI = document.querySelector("#UI");
+            loadUI(0, UI);
 
             // Add onClick events
             let startBtn = document.getElementById("startBtn")
