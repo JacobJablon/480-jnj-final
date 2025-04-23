@@ -161,7 +161,7 @@
         const container2 = document.querySelector("#container2");
 
 
-
+        // At the next step in the timeline, the animation function will be called
         tl.call(() => {
             container1.setAttribute('visible', true);
         }, null, 0) // 1 second later
@@ -208,7 +208,6 @@
             let captions = [];
             loadCaptions(0).then((captions) => {
                 // console.log(captions);
-
                 // Now you'll see the actual parsed captions
                 setInterval(() => {
                     if (sound.playing()) {
