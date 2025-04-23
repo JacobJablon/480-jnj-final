@@ -42,9 +42,6 @@
             <a-asset-item id="declineGraph" src="../assets/DeclineG/DeclineG.gltf"></a-asset-item>
             <a-asset-item id="kodak-Tower" src="../assets/kodakT/result.gltf"></a-asset-item>
             <a-asset-item id="bal-Tower" src="../assets/bLHeadQuarters/result.gltf"></a-asset-item>
-            <a-asset-item id="bal-Tower" src="../assets/bLHeadQuarters/result.gltf"></a-asset-item>
-            <a-asset-item id="bal-Tower" src="../assets/bLHeadQuarters/result.gltf"></a-asset-item>
-            <a-asset-item id="bal-Tower" src="../assets/bLHeadQuarters/result.gltf"></a-asset-item>
             <!-- <a-asset-item id="expl" src="../assets/explosion/scene.gltf"></a-asset-item> -->
             <img id="haloidImg" src="../assets/haloid.jpg" />
             <img id="chesterImg" src="../assets/chesterC.jpg" />
@@ -58,23 +55,20 @@
         <a-entity id="everything-container" rotation="0 0 0" position="0 0 -15">
             <a-entity id="container1" visible="false">
                 <a-entity id="kT">
-                    <a-entity gltf-model="#kodak-Tower" position="0 0 0" scale="1 1 1"
-                        material="transparent: true; opacity: 0.5">
+                    <a-entity gltf-model="#kodak-Tower" position="0 0 0" scale="1 1 1">
                     </a-entity>
                     <a-entity position="0 2.3 0" text="value:Kodak; width:10; align:center ">
                     </a-entity>
                 </a-entity>
                 <a-entity id="xT">
-                    <a-entity gltf-model="#xerox-Tower" position="0 0 3" scale="0.01 0.01 0.01"
-                        material="transparent: true; opacity: 0">
+                    <a-entity gltf-model="#xerox-Tower" position="0 0 3" scale="0.01 0.01 0.01">
                     </a-entity>
                     <a-entity position="0 2.5 0" text="value:Xerox; width:10; align:center ">
                     </a-entity>
 
                 </a-entity>
                 <a-entity id="blT">
-                    <a-entity gltf-model="#bal-Tower" position="0 0 0" scale="0.02 0.02 0.02"
-                        material="transparent: true; opacity: 0">
+                    <a-entity gltf-model="#bal-Tower" position="0 0 0" scale="0.02 0.02 0.02">
                     </a-entity>
                     <a-entity position="0 2.5 0" text="value:Bauch&Lomb; width:10; align:center ">
                     </a-entity>
@@ -95,12 +89,11 @@
 
 
             <a-entity>
-                <a-entity id="xerox-Logo" gltf-model="#xeroxLogo" position="-15 0 0" scale="0.01 0.01 0.01"
-                    material="transparent: true; opacity: 0">
+                <a-entity id="xerox-Logo" gltf-model="#xeroxLogo" position="-15 0 0" scale="0.01 0.01 0.01">
                 </a-entity>
 
-                <a-entity id="xeroxB" visible="false" gltf-model="#xerox-Tower" position="0 -1 0" scale="0.03 0.03 0.03"
-                    material="transparent: true; opacity: 0">
+                <a-entity id="xeroxB" visible="false" gltf-model="#xerox-Tower" position="0 -1 0"
+                    scale="0.03 0.03 0.03">
                 </a-entity>
                 <!-- <a-entity id="paperObj" gltf-model="#paper" position="0 0 0" scale="0.02 0.02 0.02"
                     material="transparent: true; opacity: 0">
@@ -109,8 +102,7 @@
                     animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear">
                 </a-entity>
 
-                <a-entity id="xerox-Alto" visible="false" gltf-model="#xeroxAlto" position="0 3 0" scale="2 2 2"
-                    material="transparent: true; opacity: 0">
+                <a-entity id="xerox-Alto" visible="false" gltf-model="#xeroxAlto" position="0 3 0" scale="2 2 2">
                 </a-entity>
                 <!-- <a-entity id="explosion" gltf-model="#expl" position="0 0 0" scale="0.02 0.02 0.02"
                 material="transparent: true; opacity: 0"
