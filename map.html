@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JNJ ROC Tech - Map</title>
+    <title>RochestAR: Path of Perseverance - Map</title>
 
     <!-- Mapbox -->
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
@@ -18,22 +18,32 @@
 </head>
 
 <body>
-    <div class="section has-background-link-dark">
+    <div class="hero has-background-link-dark container is-fullheight is-fullwidth">
         <div class="is-flex is-flex-direction-column">
 
             <!-- ********** TITLE ********** -->
-            <div class="column is-12 has-text-centered py-0 mb-2" id="title-container">
+            <div class="has-text-centered py-0 pt-2" id="title-container">
                 <h1 class="is-size-1 title has-text-white has-text-centered" id="map-title">Map</h1>
             </div>
 
             <!-- ********** MAP ********** -->
-            <div class="column is-12 has-text-centered py-0 mb-2" id="map-container">
+            <div class="has-text-centered py-0 my-2" id="map-container">
                 <div id="map"></div>
             </div>
 
             <!-- ********** FROM ___ TO ___ ********** -->
-            <div class="column is-12 has-text-centered py-0 mb-2" id="fromTo-container">
+            <div class="has-text-centered py-0 mb-3" id="fromTo-container">
                 <h1 class="is-size-5 title has-text-white has-text-centered" id="fromTo"></h1>
+            </div>
+
+            <!-- ********** BUTTON ********** -->
+            <div class="has-text-centered py-0 mb-6" id="btn-container">
+                <button class="button is-rounded is-small is-success has-text-black" id="arrive-btn">Tap when you arrive!</button>
+            </div>
+
+            <!-- ********** LOGO ********** -->
+            <div class="has-text-centered py-0 mb-6 has-background-white" id="fromTo-container">
+                <img src="assets/jnjLogo.PNG" alt="site logo" class="py-0 px-0" width="50px">
             </div>
         </div>
     </div>

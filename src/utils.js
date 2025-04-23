@@ -12,6 +12,7 @@ const poiLocations = [
 
 
 const setupMap = (route, zoom = 15, userCoords) => {
+    console.log("ROUTE: ", route);
     mapboxgl.accessToken = 'pk.eyJ1IjoianJqODI1MCIsImEiOiJjbTk3OG9mMWcwNTIyMmpxMmp5ZzNzdWFiIn0.EkdpGr7grUZ8_9FN3l047g';
 
     const getMidpoint = (arrayOfPOIs) => {
@@ -189,7 +190,7 @@ const setupMap = (route, zoom = 15, userCoords) => {
                     }
                 },
                 'paint': {
-                    'circle-radius': 8,
+                    'circle-radius': 10,
                     'circle-color': '#03f' //blue
                 }
             });
