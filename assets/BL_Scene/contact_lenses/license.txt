@@ -1,0 +1,11 @@
+Model Information:
+* title:	contact lenses case (container for lenses)
+* source:	https://sketchfab.com/3d-models/contact-lenses-case-container-for-lenses-1abe94364c5945cf9c9913852a55595b
+* author:	Prywid (https://sketchfab.com/fyou24)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "contact lenses case (container for lenses)" (https://sketchfab.com/3d-models/contact-lenses-case-container-for-lenses-1abe94364c5945cf9c9913852a55595b) by Prywid (https://sketchfab.com/fyou24) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
