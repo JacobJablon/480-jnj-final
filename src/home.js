@@ -30,6 +30,11 @@ const init = () => {
     setupNav();
     const route = [utils.poiLocations[0], utils.poiLocations[1], utils.poiLocations[2], utils.poiLocations[3], utils.poiLocations[4], utils.poiLocations[5], utils.poiLocations[6], utils.poiLocations[7]];
     utils.setupMap(route, 14);
+
+    const startBtn = document.querySelector("#start-btn");
+    startBtn.addEventListener('click', () => {
+        window.location.href = `./map.html?startingLocation=notStarted`;
+    });
 }
 
 window.onload = init;

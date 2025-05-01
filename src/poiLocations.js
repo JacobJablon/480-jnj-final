@@ -1,5 +1,13 @@
 const locations = [
-  { title: "Xerox", captionPath: "../assets/Introduction_Xerox.vtt" },
+  {
+    title: "Xerox",
+    captionPath: "../assets/Transcripts/Introduction_Xerox.vtt",
+  },
+  {
+    title: "Bauch & Lomb",
+    captionPath: "../assets/Transcripts/BauschLomb.vtt",
+  },
+  { title: "Kodak", captionPath: "../assets/Transcripts/Kodak.vtt" },
 ];
 
 const loadUI = (place, parent) => {
