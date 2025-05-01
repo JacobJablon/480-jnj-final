@@ -116,8 +116,9 @@
 
             document.getElementById("mapBtn").addEventListener("click", () => {
                 sound.stop(); // stop resets the playback and stops it
-                timeline.stop(); // stop the timeline
+                // timeline.stop(); // stop the timeline
 
+                window.location.href = `../map.html?startingLocation=xerox`; //LAST PART OF STRING CHANGES ON EACH PAGE
             });
 
 

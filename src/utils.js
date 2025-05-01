@@ -36,7 +36,8 @@ const isLocationClose = ({ userLat, userLon }, location) => {
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   const distance = R * c;
 
-  return distance <= maxDistanceKm;
+//   return distance <= maxDistanceKm;
+    return true;
 };
 
 const setupMap = (route, zoom = 15, userCoords) => {

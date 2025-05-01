@@ -1,8 +1,11 @@
 import * as utils from "./utils.js";
 
+const urlParams = new URLSearchParams(window.location.search);
+let startingLocation = urlParams.get('startingLocation');
+
 let poiPage = "";
+
 const drawRoute = () => {
-  let startingLocation;
   let start;
   let end;
   let route;
@@ -10,7 +13,9 @@ const drawRoute = () => {
   let userCoords = {};
   const fromTo = document.querySelector("#fromTo");
 
-  startingLocation = "notStarted"; // ************** WILL NEED TO CHANGE THIS TO BE DYNAMIC
+  if (!startingLocation) { //FOR TESTING PURPOSES
+    startingLocation = "notStarted";
+  }
 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
@@ -30,7 +35,7 @@ const drawRoute = () => {
           end = utils.poiLocations[0].name;
           zoom = 11;
           if (utils.isLocationClose(userCoords, utils.poiLocations[0])) {
-            poiPage = "../poiLocations/Xerox.html";
+            poiPage = "./poiLocations/Xerox.html";
           }
         } else if (startingLocation == "xerox") {
           route = [utils.poiLocations[0], utils.poiLocations[1]];
@@ -38,7 +43,7 @@ const drawRoute = () => {
           end = utils.poiLocations[1].name;
           zoom = 17;
           if (utils.isLocationClose(userCoords, utils.poiLocations[1])) {
-            poiPage = "../poiLocations/Baush.html";
+            poiPage = "./poiLocations/BaushLomb.html";
           }
         } else if (startingLocation == "bausch") {
           route = [utils.poiLocations[1], utils.poiLocations[2]];
@@ -46,14 +51,14 @@ const drawRoute = () => {
           end = utils.poiLocations[2].name;
           zoom = 15;
           if (utils.isLocationClose(userCoords, utils.poiLocations[0])) {
-            poiPage = "../poiLocations/Kodak.html";
+            poiPage = "./poiLocations/Kodak.html";
           }
         } else if (startingLocation == "kodak") {
           route = [utils.poiLocations[2], utils.poiLocations[3]];
           start = utils.poiLocations[2].name;
           end = utils.poiLocations[3].name;
           if (utils.isLocationClose(userCoords, utils.poiLocations[0])) {
-            poiPage = "../poiLocations/Itx.html";
+            poiPage = "./poiLocations/Itx.html";
           }
           zoom = 15;
         } else if (startingLocation == "itx") {
@@ -96,13 +101,13 @@ const drawRoute = () => {
   console.log("USER COORDS: ", userCoords);
 };
 
-const arriveBtn = document.querySelector("#arrive-btn");
-arriveBtn.addEventListener("onclick", () => {
-  window.location.href = poiPage;
-});
-
 const init = () => {
   drawRoute();
+
+  const arriveBtn = document.querySelector("#arrive-btn");
+  arriveBtn.addEventListener("click", () => {
+    window.location.href = poiPage;
+  });
 };
 
 window.onload = init;
