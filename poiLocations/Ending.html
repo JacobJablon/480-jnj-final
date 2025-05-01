@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ending</title>
+    <!-- A-Frame -->
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <!-- Pure three.js code that the A-Frame components use for location-based AR -->
+    <script src='https://raw.githack.com/AR-js-org/AR.js/3.4.5/three.js/build/ar-threex-location-only.js'></script>
+    <!-- AR.js A-Frame components (recommended to use version 3.4.5, rather than master) -->
+    <script src='https://raw.githack.com/AR-js-org/AR.js/3.4.5/aframe/build/aframe-ar.js'></script>
+    <!-- Animation Components -->+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <!-- Howler.js for audio playback -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"
+        integrity="sha512-xi/RZRIF/S0hJ+yJJYuZ5yk6/8pCiRlEXZzoguSMl+vk2i3m6UjUO/WcZ11blRL/O+rnj94JRGwt/CHbc9+6EA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Bulma -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link href="../styles/poiLocations.css" rel="stylesheet">
+    <script src="../src/poiLocations.js"></script>
+</head>
+
+<body>
+    <a-scene arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' vr-mode-ui="enabled: false"
+        renderer="antialias: true; alpha: true" id="scene">
+
+    </a-scene>
+
+    <div id="UI">
+
+    </div>
+</body>
+
+<script type="module">
+
+
+    window.onload = () => {
+        document.querySelector('a-scene').setAttribute('timeline-control', '');
+    }
+
+    const buildTimeline = () => {
+        const tl = gsap.timeline({ paused: true });
+
+        // tl.to(boxA.position, { y: 3, duration: 1, ease: "power2.out" }, 0)
+        //     .to(boxB.rotation, { y: Math.PI * 2, duration: 1, ease: "sine.inOut" }, 0)
+        //     .to(boxC.scale, { x: 2, y: 2, z: 2, duration: 1, ease: "back.out(1.7)" }, 0);
+
+        return tl;
+    }
+
+
+    AFRAME.registerComponent('timeline-control', {
+        init: function () {
+            const sound = new Howl({
+                src: ['../assets/script_intro.mp3']
+            });
+            // load captions from JSON file
+
+            let captions = [];
+            loadCaptions(0).then((captions) => {
+                // console.log(captions);
+
+                // Now you'll see the actual parsed captions
+                setInterval(() => {
+                    if (sound.playing()) {
+                        const currentTime = sound.seek();// get current playback time
+                        const currentCaption = captions.find(cue =>
+                            currentTime >= cue.start && currentTime <= cue.end
+                        );
+
+
+                        captionDisplay.innerHTML = currentCaption ? currentCaption.text : "";
+                    }
+                }, 100);
+            });
+
+
+            // Load the UI
+            let UI = document.querySelector("#UI");
+            loadUI(0, UI);
+
+            //Load the time line
+
+
+
+            const timeline = buildTimeline();
+
+            // // Play on load
+
+
+            // Add onClick events
+            let startBtn = document.getElementById("startBtn")
+            startBtn.addEventListener("click", () => {
+                sound.play(); // play from the beginning
+                startBtn.style.display = "none";
+                timeline.play();
+            });
+
+            const captionDisplay = document.getElementById("captionBox");
+
+            document.getElementById("restartBtn").addEventListener("click", () => {
+                sound.stop(); // stop resets the playback and stops it
+                sound.play();
+                timeline.restart();// play from the beginning
+            });
+
+            document.getElementById("mapBtn").addEventListener("click", () => {
+                sound.stop(); // stop resets the playback and stops it
+                // timeline.stop(); // stop the timeline
+
+                window.location.href = `../map.html?startingLocation=xerox`; //LAST PART OF STRING CHANGES ON EACH PAGE
+            });
+
+
+
+
+
+
+        }
+    });
+
+    // Attach the component to the scene
+    document.querySelector('a-scene').setAttribute('timeline-control', '');
+</script>
+
+</html>
