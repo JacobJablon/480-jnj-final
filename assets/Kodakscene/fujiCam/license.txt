@@ -1,0 +1,11 @@
+Model Information:
+* title:	FUJIFILM X-T20
+* source:	https://sketchfab.com/3d-models/fujifilm-x-t20-3a74c1e1a7b14059ab754d8a450af260
+* author:	Metazeon (https://sketchfab.com/Metazeon)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "FUJIFILM X-T20" (https://sketchfab.com/3d-models/fujifilm-x-t20-3a74c1e1a7b14059ab754d8a450af260) by Metazeon (https://sketchfab.com/Metazeon) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

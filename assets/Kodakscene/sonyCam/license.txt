@@ -1,0 +1,11 @@
+Model Information:
+* title:	SONY A7R3 camera
+* source:	https://sketchfab.com/3d-models/sony-a7r3-camera-aa7ecf6efe144d1d9898a0ae294e0722
+* author:	Metazeon (https://sketchfab.com/Metazeon)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "SONY A7R3 camera" (https://sketchfab.com/3d-models/sony-a7r3-camera-aa7ecf6efe144d1d9898a0ae294e0722) by Metazeon (https://sketchfab.com/Metazeon) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
