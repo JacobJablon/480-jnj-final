@@ -14,6 +14,7 @@
     <!-- Animation Components -->+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
+
     <!-- Howler.js for audio playback -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"
         integrity="sha512-xi/RZRIF/S0hJ+yJJYuZ5yk6/8pCiRlEXZzoguSMl+vk2i3m6UjUO/WcZ11blRL/O+rnj94JRGwt/CHbc9+6EA=="
@@ -33,6 +34,32 @@
     <a-scene arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' vr-mode-ui="enabled: false"
         renderer="antialias: true; alpha: true" id="scene">
 
+        <a-assets>
+            <a-asset-item id="xerox-tower" src="../assets/xeroxT/result.gltf"></a-asset-item>
+            <a-asset-item id="bausch-tower" src="../assets/bLHeadQuarters/result.gltf"></a-asset-item>
+            <a-asset-item id="kodak-tower" src="../assets/kodakT/result.gltf"></a-asset-item>
+            <img id="xerox-logo" src="../assets/EndingScene/xerox-logo.png" />
+            <img id="bausch-logo" src="../assets/EndingScene/bausch-logo.png" />
+            <img id="kodak-logo" src="../assets/EndingScene/kodak-logo.png" />
+            <a-asset-item id="flower" src="../assets/EndingScene/flower/scene.gltf"></a-asset-item>
+            <a-asset-item id="educator" src="../assets/EndingScene/educator/scene.gltf"></a-asset-item>
+            <a-asset-item id="creator" src="../assets/EndingScene/creator/scene.gltf"></a-asset-item>
+            <a-asset-item id="engineer" src="../assets/EndingScene/engineer/scene.gltf"></a-asset-item>
+            <a-asset-item id="artist" src="../assets/EndingScene/artist/scene.gltf"></a-asset-item>
+            <a-asset-item id="activist" src="../assets/EndingScene/activist/scene.gltf"></a-asset-item>
+            <a-asset-item id="fireworks-red" src="../assets/EndingScene/fireworks-red/scene.gltf"></a-asset-item>
+            <a-asset-item id="fireworks-white" src="../assets/EndingScene/fireworks-white/scene.gltf"></a-asset-item>
+            <a-asset-item id="confetti" src="../assets/EndingScene/confetti/scene.gltf"></a-asset-item>
+        </a-assets>
+
+        <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
+
+        <!-- Overall container entity that holds every other entity -->
+        <a-entity id="everything-container" rotation="0 0 0" position="0 0 -15">
+            <a-entity id="companies-container" visible="false">
+                
+            </a-entity>
+        </a-entity>
     </a-scene>
 
     <div id="UI">
@@ -41,7 +68,6 @@
 </body>
 
 <script type="module">
-
 
     window.onload = () => {
         document.querySelector('a-scene').setAttribute('timeline-control', '');

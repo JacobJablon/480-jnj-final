@@ -1,0 +1,8 @@
+Model Information:
+* title:	Artist Palette
+* source:	https://sketchfab.com/3d-models/artist-palette-f48eeeac50ad4a19a0deee49c6f36f52
+* author:	saurabh.buradkar7 (https://sketchfab.com/saurabh.buradkar7)
+
+Model License:
+* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
+* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works
