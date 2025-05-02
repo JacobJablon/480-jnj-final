@@ -52,8 +52,10 @@
                 referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
         </a-assets>
 
+        <!-- gps-new-entity-place="latitude: 43.15458, ; longitude:-77.60608" -->
+         <!-- gps-new-entity-place="latitude: 43.15744261486684; longitude: -77.60157263409239" -->
         <a-camera gps-new-camera="gpsMinDistance: 5" ></a-camera>
-        <a-entity id="whole-container" rotation="0 0 0" position="0 0 -5" gps-new-entity-place="latitude: 43.06370881505515, ; longitude:-77.69086546931321">
+        <a-entity id="whole-container" rotation="0 0 0" position="0 0 -5" gps-new-entity-place="latitude: 43.15744261486684; longitude: -77.60157263409239">
             <a-entity id="container1" visible="false" position="0 3 0">
                 <a-image id="jj-bausch" src="#jjBausch" visible="true" position="-0.67 -1.44 -1.30"
                     scale="1 1 1"></a-image>
@@ -123,7 +125,7 @@
         .call(() => {
             container1.setAttribute("visible", "true")
         }, null, ">") // right after
-        .to(container1.object3D.position, { z: 5, duration: 5, ease: "linear" }, "<") //right after (5 secs) (13)
+        .to(container1.object3D.position, { z: 4, duration: 5, ease: "linear" }, "<") //right after (5 secs) (13)
         .call(() => {
             glasses.setAttribute("visible", "false")
         }, null, ">+=1") // right after 1 second (14 seconds)
@@ -175,8 +177,8 @@
         .call(() => {
             container3.setAttribute("visible", false)
         }, null, ">+2")
-        .to(moon.object3D.position, { y: -15, duration: 4, ease: "linear" }, "<+2")
-        .to(moon.object3D.scale, { x: 8, y: 8, z: 8 }, "<")
+        .to(moon.object3D.position, { y: -15, duration: 5, ease: "linear" }, "<+2")
+        // .to(moon.object3D.scale, { x: 8, y: 8, z: 8 }, "<")
         .call(() =>{
                 recorder.setAttribute("visible", "true")
         }, null, ">+2")
@@ -185,8 +187,6 @@
             decl.setAttribute("visible", "true")
         }, null,">+2")
         .to(decl.object3D.position, {x: 1.620, y: 0.834, z:3.788, duration: 10, ease: "elastic.inOut(1,0.3)"}, "<")
-
-
 
         return tl
 

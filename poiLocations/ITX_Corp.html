@@ -32,8 +32,24 @@
 
 <body>
 
+    <a-scene arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' vr-mode-ui="enabled: false"
+    renderer="antialias: true; alpha: true" id="scene">
+
+    <a-assets>
+        <a-asset-item id = "school" src="../assets/ITX_Scene/school_building/scene.gltf"></a-asset-item>
+        <a-asset-item id = "college" src = "../assets/ITX_Scene/low-poly_university/scene.gltf"></a-asset-item>
+        <a-asset-item id = "hospital" src = "../assets/ITX_Scene/hospital/scene.gltf"></a-asset-item>
+        <a-asset-item id = "crowd" src = "../assets/ITX_Scene/low_detail_animated_crowd/scene.gltf"></a-asset-item>
+    </a-assets>
+
+    <a-camera gps-new-camera="gpsMinDistance: 5"></a-camera>
+    <a-entity></a-entity>
+        
+
+    </a-scene>
 
 
 
-    
+
+
 </body>
