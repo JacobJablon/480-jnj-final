@@ -36,24 +36,34 @@
 
         <a-assets>
             <a-asset-item id="blGlasses" src="../assets/BL_Scene/glasses/scene.gltf"></a-asset-item>
-            <a-asset-tem id = "bigMoon" src="../assets/BL_Scene/moon/scene.gltf"></a-asset-tem>
+            <a-asset-item id = "bigMoon" src="../assets/BL_Scene/moon/scene.gltf"></a-asset-item>
             <a-asset-item id = "contactLenses" src="../assets/BL_Scene/contact_lenses/scene.gltf"></a-asset-item>
+            <a-asset-item id = "vulcan" src = "../assets/BL_Scene/glass_eye/scene.gltf"></a-asset-item>
+            <a-asset-item id = "microscope" src = "../assets/BL_Scene/microscope/scene.gltf"></a-asset-item>
             <img id="jjBausch" src="../assets/BL_Scene/JJ_Bausch.jpg">
             <img id="henryLomb" src="../assets/BL_Scene/henry_lomb.png">
         </a-assets>
 
         <a-camera gps-new-camera="gpsMinDistance: 5"></a-camera>
         <a-entity id="whole-container" rotation="0 0 0" position="0 0 -5">
-            <a-entity id="container1" visible="true" position="0 3 0">
-                <a-image id="jj-bausch" src="#jjBausch" visible="true" position="-0.67 -1.44 1.30" scale="1 1 1"></a-image>
-                <a-image id="henry-lomb" src="#henryLomb" visible="true" position="0.67 -1.44 1.30" scale="1 1 1"></a-image>
+            <a-entity id="container1" visible="false" position="0 3 0">
+                <a-image id="jj-bausch" src="#jjBausch" visible="true" position="-0.67 -1.44 -1.30" scale="1 1 1"></a-image>
+                <a-image id="henry-lomb" src="#henryLomb" visible="true" position="0.67 -1.44 -1.30" scale="1 1 1"></a-image>
             </a-entity>
 
-            <a-entity id="container2" visible="true">
-                <a-entity id="glasses" gltf-model="#blGlasses" positon="0 0 0" scale="0.005 0.005 0.005"></a-entity>
-                <a-entity id ="moon" gltf-model="#bigMoon" position = "0 0 0" scale ="1 1 1"></a-entity>
-                <a-entity id ="lenses" gltf-model="#contactLenses" position ="0 0 0" scale = "1 1 1"></a-entity>
+            <a-entity id="container2" visible="false">
+                <a-entity id="glasses" gltf-model="#blGlasses" position="0 0 0" scale="0.005 0.005 0.005"></a-entity>
+                <a-entity id ="moon" gltf-model="#bigMoon" position = "0 10 0" scale ="3 3 3"></a-entity>
+               
+                <!-- <a-entity id ="lenses" gltf-model="#contactLenses" position ="-0.08 1.754 3.650" scale = "4.5 4.5 4.5" 
+                rotation = "51.05, 69.55, 74.947"></a-entity>  -->
+               
+
             </a-entity>
+
+            <a-entity id="container3" visible="true">
+                <a-entity id="newGlasses" gltf-model="#vulcan" position="1.977 0.055 2.927" scale ="0.25 0.25 0.25"></a-entity>
+                <a-entity id="microscopic" gltf-model="#microscope" position="-1.0 -0.13 2.692" scale ="0.02 0.02 0.02"></a-entity>
         </a-entity>
     </a-scene>
 
@@ -68,9 +78,100 @@ window.onload = () => {
     document.querySelector("a-scene").setAttribute('timeline-control', '') 
 }
 
-const buildTimeLine = () => {
+const buildTimeline = () => {
+
+    const tl = gsap.timeline ({ paused: true })
+
+
+    const container1 = document.querySelector("#container1")
+    const container2 = document.querySelector("#container2")
+    const container3 = document.querySelector("#container3")
+    const glasses = document.querySelector("#glasses")
+    const moon = document.querySelector("#moon")
+    const newGlasses = document.querySelector("#newGlasses")
+    const microscope = document.querySelector("#microscopic")
+   // const lenses = document.querySelector("#lenses")
+
+   
+//    tl.call(() => {
+//         container2.setAttribute("visible", "true")
+//     }, null, 2) // apeares at 3 second mark 
+//      .to(glasses.object3D.position, { z: 2, duration: 5, ease: "expoScale(0.5,7,none)"}, ">+1") // 9 seconds total (6 secs)
+//      .call(() => {
+//          container1.setAttribute("visible", "true")
+//      }, null, ">") // right after
+//      .to(container1.object3D.position, { y: 3, z: 5, duration: 5, ease: "linear"}, "<") // 14 seconds total (5 secs)
+//      tl.call(() => {
+//         glasses.setAttribute("visible", "false")
+//      }, null, ">+1") // right after 1 second (16 seconds)
+//      .call(() => {
+//         container3.setAttribute("visible", "true")
+//      }, null, ">+1") // right after 1 second (17 seconds)
+//      .to(newGlasses.object3D.position, {x: -2.020, duration: 7, ease: "linear"}, "<") // 22 seconds total (5 secs)
+//      .to(newGlasses.object3D.rotation, {x: 0, y: 270, z: 0, duration: 7, ease: "linear"}, "<") // 24 seconds total (2 secs)
+
+    return tl
 
 }
+
+AFRAME.registerComponent('timeline-control',{
+    init: function() {
+
+        const sound = new Howl({
+            src: ["../audio/Bausch_Lomb.mp3"],
+
+        })
+        // load captions from JSON file
+        let captions = [];
+
+        loadCaptions(1).then((captions) =>{
+            console.log(captions);
+            setInterval(() => {
+                if(sound.playing()){
+                    const currentTime = sound.seek(); 
+                    const currentCaption = captions.find(cue => 
+                        currentTime >= cue.start && currentTime <= cue.end
+                    );
+                    captionDisplay.innerHTML = currentCaption ? currentCaption.text : "";
+                }
+
+            }, 100 
+        )
+
+
+        })
+
+        // Load the UI
+        let UI = document.querySelector("#bauschUI")
+        loadUI(1, UI)
+
+        // Load the timeline
+        const timeline = buildTimeline()
+
+        // Add onClick events
+        let startBtn = document.querySelector("#startBtn")
+        startBtn.addEventListener("click", () => {
+            sound.play()
+            timeline.play()
+            startBtn.style.display = "none"
+        })
+
+        const captionDisplay = document.querySelector("#captionBox")
+        document.querySelector("#restartBtn").addEventListener("click", () => {
+            sound.stop()
+            sound.play()
+            timeline.revert()
+            timeline.restart()
+        })
+        document.querySelector("#mapBtn").addEventListener("click", () => {
+            sound.stop()
+
+            window.location.href = "..map.html?startingLocation=bausch"
+        })
+    }
+})
+
+document.querySelector('a-scene').setAttribute('timeline-control', '')
 
 
 
