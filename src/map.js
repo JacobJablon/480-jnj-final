@@ -43,7 +43,7 @@ const drawRoute = () => {
           end = utils.poiLocations[1].name;
           zoom = 17;
           if (utils.isLocationClose(userCoords, utils.poiLocations[1])) {
-            poiPage = "./poiLocations/BaushLomb.html";
+            poiPage = "./poiLocations/BauschLomb.html";
           }
         } else if (startingLocation == "bausch") {
           route = [utils.poiLocations[1], utils.poiLocations[2]];

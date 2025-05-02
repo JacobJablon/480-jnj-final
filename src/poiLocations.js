@@ -4,7 +4,7 @@ const locations = [
     captionPath: "../assets/Transcripts/Introduction_Xerox.vtt",
   },
   {
-    title: "Bauch & Lomb",
+    title: "Bausch & Lomb",
     captionPath: "../assets/Transcripts/BauschLomb.vtt",
   },
   { title: "Kodak", captionPath: "../assets/Transcripts/Kodak.vtt" },
