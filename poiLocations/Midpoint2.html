@@ -44,7 +44,7 @@
         <a-camera gps-new-camera='gpsMinDistance: 10'></a-camera>
 
         <!-- Overall container entity that holds every other entity -->
-        <a-entity id="everything-container" rotation="0 0 0">
+        <a-entity id="everything-container" rotation="0 0 0" gps-new-entity-place="latitude: 43.15631542372931, longitude: -77.60050935072933">
             <a-entity position="0 0 -3" scale="0.1 0.1 0.1" gltf-model="#speaker" class="clickable" listener></a-entity>
         <a-entity cursor="fuse: false; rayOrigin: mouse" position="0 0 -1"></a-entity>
 
@@ -142,7 +142,7 @@
                 sound.stop(); // stop resets the playback and stops it
                 // timeline.stop(); // stop the timeline
 
-                window.location.href = `../map.html?startingLocation=Midpoint2`;
+                window.location.href = `../map.html?startingLocation=artCenterQuad`;
             });
 
         }
