@@ -1,7 +1,7 @@
 import * as utils from "./utils.js";
 
 const urlParams = new URLSearchParams(window.location.search);
-let startingLocation = urlParams.get('startingLocation');
+let startingLocation = urlParams.get("startingLocation");
 
 let poiPage = "";
 
@@ -13,7 +13,8 @@ const drawRoute = () => {
   let userCoords = {};
   const fromTo = document.querySelector("#fromTo");
 
-  if (!startingLocation) { //FOR TESTING PURPOSES
+  if (!startingLocation) {
+    //FOR TESTING PURPOSES
     startingLocation = "notStarted";
   }
 
@@ -66,11 +67,17 @@ const drawRoute = () => {
           start = utils.poiLocations[3].name;
           end = utils.poiLocations[4].name;
           zoom = 15;
+          if (utils.isLocationClose(userCoords, utils.poiLocations[6])) {
+            poiPage = "./poiLocations/Envative.html";
+          }
         } else if (startingLocation == "millerQuad") {
           route = [utils.poiLocations[4], utils.poiLocations[5]];
           start = utils.poiLocations[4].name;
           end = utils.poiLocations[5].name;
           zoom = 15;
+          if (utils.isLocationClose(userCoords, utils.poiLocations[6])) {
+            poiPage = "./poiLocations/Envative.html";
+          }
         } else if (startingLocation == "envative") {
           route = [utils.poiLocations[5], utils.poiLocations[6]];
           start = utils.poiLocations[5].name;
