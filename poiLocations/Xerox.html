@@ -154,6 +154,7 @@
 
         // At the next step in the timeline, the animation function will be called
         tl.call(() => {
+            declineGraph.setAttribute('visible', false);
             container1.setAttribute('visible', true);
         }, null, 0) // 1 second later
 

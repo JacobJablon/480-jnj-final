@@ -12,7 +12,7 @@ const locations = [
   { title: "The Quad", captionPath: "../assets/Transcripts/midpoint1.vtt.vtt" },
   { title: "Envative", captionPath: "../assets/Transcripts/Envative.vtt" },
   {
-    title: "Rochester Contemporary Art Center Quad",
+    title: "RoCo Quad",
     captionPath: "../assets/Transcripts/midpoint2.vtt",
   },
   { title: "Ending", captionPath: "../assets/Transcripts/Ending.vtt" },

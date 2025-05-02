@@ -50,17 +50,17 @@ const drawRoute = () => {
           start = utils.poiLocations[1].name;
           end = utils.poiLocations[2].name;
           zoom = 15;
-          if (utils.isLocationClose(userCoords, utils.poiLocations[0])) {
+          if (utils.isLocationClose(userCoords, utils.poiLocations[2])) {
             poiPage = "./poiLocations/Kodak.html";
           }
         } else if (startingLocation == "kodak") {
           route = [utils.poiLocations[2], utils.poiLocations[3]];
           start = utils.poiLocations[2].name;
           end = utils.poiLocations[3].name;
-          if (utils.isLocationClose(userCoords, utils.poiLocations[0])) {
+          zoom = 15;
+          if (utils.isLocationClose(userCoords, utils.poiLocations[3])) {
             poiPage = "./poiLocations/Itx.html";
           }
-          zoom = 15;
         } else if (startingLocation == "itx") {
           route = [utils.poiLocations[3], utils.poiLocations[4]];
           start = utils.poiLocations[3].name;
@@ -76,11 +76,17 @@ const drawRoute = () => {
           start = utils.poiLocations[5].name;
           end = utils.poiLocations[6].name;
           zoom = 16;
+          if (utils.isLocationClose(userCoords, utils.poiLocations[6])) {
+            poiPage = "./poiLocations/Midpoint2.html";
+          }
         } else if (startingLocation == "artCenterQuad") {
           route = [utils.poiLocations[6], utils.poiLocations[7]];
           start = utils.poiLocations[6].name;
           end = utils.poiLocations[7].name;
           zoom = 16;
+          if (utils.isLocationClose(userCoords, utils.poiLocations[7])) {
+            poiPage = "./poiLocations/Ending.html";
+          }
         }
 
         fromTo.textContent = `${start} -> ${end}`;

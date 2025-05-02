@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ending</title>
+    <title>RoCo Quad</title>
     <!-- A-Frame -->
     <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
     <!-- Pure three.js code that the A-Frame components use for location-based AR -->
@@ -170,11 +170,6 @@
 
 
         tl.call(() => {
-            jnjLogo.setAttribute('visible', false);
-            confettiContainer.setAttribute('visible', false);
-            confettiLeft.setRemove('animation-mixer');
-            confettiRight.setRemove('animation-mixer');
-
             kodakContainer.setAttribute('visible', true);
         }, null, 1)
             .call(() => {
@@ -262,12 +257,12 @@
     AFRAME.registerComponent('timeline-control', {
         init: function () {
             const sound = new Howl({
-                src: ["../audio/Ending.mp3"]
+                src: ["../audio/midpoint2.mp3"]
             });
             // load captions from JSON file
 
             let captions = [];
-            loadCaptions(7).then((captions) => {
+            loadCaptions(6).then((captions) => {
                 // console.log(captions);
 
                 // Now you'll see the actual parsed captions
@@ -289,7 +284,7 @@
 
             // Load the UI
             let UI = document.querySelector("#UI");
-            loadUI(7, UI);
+            loadUI(6, UI);
 
             // Add onClick events
             let startBtn = document.getElementById("startBtn")
@@ -311,7 +306,7 @@
                 sound.stop(); // stop resets the playback and stops it
                 // timeline.stop(); // stop the timeline
 
-                window.location.href = `../index.html`; //LAST PART OF STRING CHANGES ON EACH PAGE
+                window.location.href = `../map.html?startingLocation=artCenterQuad`; //LAST PART OF STRING CHANGES ON EACH PAGE
             });
         }
     });
