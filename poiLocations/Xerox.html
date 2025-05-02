@@ -49,11 +49,11 @@
 
         </a-assets>
 
-        <a-camera gps-new-camera='gpsMinDistance: 10'
-            gps-entity-place="longitude: -77.693504; latitude: 43.061353 ;"></a-camera>
+        <a-camera gps-new-camera='gpsMinDistance: 10'></a-camera>
 
         <!-- Overall container entity that holds every other entity -->
-        <a-entity id="everything-container" rotation="0 0 0" position="0 0 -15">
+        <a-entity id="everything-container" rotation="0 0 0"
+            gps-entity-place="longitude: -77.693504; latitude: 43.061353;">
             <a-entity id="container1" visible="false">
                 <a-entity id="kT">
                     <a-entity gltf-model="#kodak-Tower" position="0 0 0" scale="1 1 1">
