@@ -1,0 +1,11 @@
+Model Information:
+* title:	confetti_fbx
+* source:	https://sketchfab.com/3d-models/confetti-fbx-dccc731479d0473fbd468499d2652269
+* author:	Javier Guijarro (https://sketchfab.com/sineadbolty)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "confetti_fbx" (https://sketchfab.com/3d-models/confetti-fbx-dccc731479d0473fbd468499d2652269) by Javier Guijarro (https://sketchfab.com/sineadbolty) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

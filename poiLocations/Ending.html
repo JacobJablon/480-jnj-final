@@ -14,6 +14,7 @@
     <!-- Animation Components -->+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
+
     <!-- Howler.js for audio playback -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"
         integrity="sha512-xi/RZRIF/S0hJ+yJJYuZ5yk6/8pCiRlEXZzoguSMl+vk2i3m6UjUO/WcZ11blRL/O+rnj94JRGwt/CHbc9+6EA=="
@@ -25,6 +26,9 @@
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <!-- Allows for animation of 3d models -->
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@6.1.1/dist/aframe-extras.min.js"></script>
+
     <link href="../styles/poiLocations.css" rel="stylesheet">
     <script src="../src/poiLocations.js"></script>
 </head>
@@ -33,6 +37,98 @@
     <a-scene arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' vr-mode-ui="enabled: false"
         renderer="antialias: true; alpha: true" id="scene">
 
+        <a-assets>
+            <a-asset-item id="kodak-tower" src="../assets/XeroxScene/kodakT/result.gltf"></a-asset-item>
+            <a-asset-item id="xerox-tower" src="../assets/XeroxScene/xeroxT/result.gltf"></a-asset-item>
+            <a-asset-item id="bausch-tower" src="../assets/XeroxScene/bLHeadQuarters/result.gltf"></a-asset-item>
+            <img id="kodak-logo" src="../assets/EndingScene/kodak-logo.png" />
+            <img id="xerox-logo" src="../assets/EndingScene/xerox-logo.png" />
+            <img id="bausch-logo" src="../assets/EndingScene/bausch-logo.png" />
+            <a-asset-item id="flower" src="../assets/EndingScene/flower/scene.gltf"></a-asset-item>
+            <a-asset-item id="educator" src="../assets/EndingScene/educator/scene.gltf"></a-asset-item>
+            <a-asset-item id="creator" src="../assets/EndingScene/creator/scene.gltf"></a-asset-item>
+            <a-asset-item id="engineer" src="../assets/EndingScene/engineer/scene.gltf"></a-asset-item>
+            <a-asset-item id="artist" src="../assets/EndingScene/artist/scene.gltf"></a-asset-item>
+            <a-asset-item id="activist" src="../assets/EndingScene/activist/scene.gltf"></a-asset-item>
+            <img id="jnjlogo" src="../assets/XeroxScene/jnjLogo.PNG" />
+            <a-asset-item id="fireworks-red" src="../assets/EndingScene/fireworks-red/scene.gltf"></a-asset-item>
+            <a-asset-item id="fireworks-white" src="../assets/EndingScene/fireworks-white/scene.gltf"></a-asset-item>
+            <a-asset-item id="confetti" src="../assets/EndingScene/confetti/scene.gltf"></a-asset-item>
+        </a-assets>
+
+        <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
+
+        <!-- Overall container entity that holds every other entity -->
+        <a-entity id="everything-container" rotation="0 0 0" position="0 0 -10">
+
+            <a-entity id="kodak-container" position="-7 0 2" visible="false">
+                <a-entity
+                    gltf-model="#kodak-tower"
+                    id="kodakT"
+                    position="0 0 0"
+                    scale="3 3 3"
+                    animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear">
+                </a-entity>
+                <a-image id="kodak-img" src="#kodak-logo" position="1.27416 2.24993 1.20592" rotation="0 45 0" scale="2.5 2.5 2.5"></a-image>
+            </a-entity>
+
+            <a-entity id="xerox-container" position="0 0 0" visible="false">
+                <a-entity
+                    gltf-model="#xerox-tower"
+                    id="xeroxT"
+                    position="0 0 0"
+                    scale="0.03 0.03 0.03"
+                    animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear">
+                </a-entity>
+                <a-image id="xerox-img" src="#xerox-logo" position="0 2.4514 1.77343" scale="4 4 4"></a-image>
+            </a-entity>
+
+            <!-- ******************* DELETE ******************* -->
+            <a-entity id="xerox-container" position="0 0 0" visible="false">
+                <a-entity
+                    gltf-model="#xerox-tower"
+                    id=""
+                    position="0 0 0"
+                    scale="0.03 0.03 0.03"
+                    animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear">
+                </a-entity>
+                <a-image id="xerox-img" src="#xerox-logo" position="0 2.4514 1.77343" scale="4 4 4"></a-image>
+            </a-entity> 
+            <!-- ******************* DELETE ******************* -->
+
+            <a-entity id="bausch-container" position="7 0 2" visible="false">
+                <a-entity
+                    gltf-model="#bausch-tower"
+                    id="bauschT"
+                    position="0 0 0"
+                    scale="0.06 0.06 0.06"
+                    animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear">
+                </a-entity>
+                <a-image id="bausch-img" src="#bausch-logo" position="-2.43475 2.62071 2.44857" rotation="0 -45 0" scale="3.5 3.5 3.5"></a-image>
+            </a-entity>
+
+            <a-entity id="flower-container" position="0 3.86 1" scale="5 5 5" visible="false">
+                <a-entity id="flower-left" gltf-model="#flower" position="-0.65 0 0" scale="1 1 1" rotation="0 -80 0"></a-entity>
+                <a-entity id="flower-right" gltf-model="#flower" position="0.65 0 0" scale="1 1 1" rotation="0 -105 0"></a-entity>
+            </a-entity>
+
+            <a-entity id="people-container" position="-1.89 2 0" scale="3 3 3" visible="true">
+                <a-entity id="people-educator" gltf-model="#educator" position="0 0 0" scale="1 1 1" rotation="0 0 0" visible="false"></a-entity>
+                <a-entity id="people-creator" gltf-model="#creator" position="0 0 0" scale="1 1 1" rotation="0 0 0" visible="false"></a-entity>
+                <a-entity id="people-engineer" gltf-model="#engineer" position="0 0 0" scale="1 1 1" rotation="0 0 0" visible="false"></a-entity>
+                <a-entity id="people-artist" gltf-model="#artist" position="0 0 0" scale="1 1 1" rotation="0 0 0" visible="false"></a-entity>
+                <a-entity id="people-activist" gltf-model="#activist" position="0 0 0" scale="1 1 1" rotation="0 0 0" visible="false"></a-entity>
+            </a-entity>
+
+            <a-image id="jnj-logo" src="#jnjlogo" position="0 2.4 0" scale="4.5 4.5 4.5" visible="false"></a-image>
+
+            <!-- FIREWORKS AND CONFETTI WILL GO HERE -->
+            <a-entity id="confetti-container" visible="false">
+                <a-entity id="confetti-left" gltf-model="#confetti" position="-2 0 0" scale="1 1 1" rotation="0 0 0"></a-entity>
+                <a-entity id="confetti-right" gltf-model="#confetti" position="2 0 0" scale="1 1 1" rotation="0 0 0"></a-entity>
+            </a-entity>
+
+        </a-entity>
     </a-scene>
 
     <div id="UI">
@@ -42,7 +138,6 @@
 
 <script type="module">
 
-
     window.onload = () => {
         document.querySelector('a-scene').setAttribute('timeline-control', '');
     }
@@ -50,9 +145,115 @@
     const buildTimeline = () => {
         const tl = gsap.timeline({ paused: true });
 
-        // tl.to(boxA.position, { y: 3, duration: 1, ease: "power2.out" }, 0)
-        //     .to(boxB.rotation, { y: Math.PI * 2, duration: 1, ease: "sine.inOut" }, 0)
-        //     .to(boxC.scale, { x: 2, y: 2, z: 2, duration: 1, ease: "back.out(1.7)" }, 0);
+        const kodakContainer = document.querySelector("#kodak-container");
+        const xeroxContainer = document.querySelector("#xerox-container");
+        const bauschContainer = document.querySelector("#bausch-container");
+        const kodakT = document.querySelector("#kodakT");
+        const xeroxT = document.querySelector("#xeroxT");
+        const bauschT = document.querySelector("#bauschT");
+        const kodakImg = document.querySelector("#kodak-img");
+        const xeroxImg = document.querySelector("#xerox-img");
+        const bauschImg = document.querySelector("#bausch-img");
+        const flowerContainer = document.querySelector("#flower-container");
+        const flowerLeft = document.querySelector("#flower-left");
+        const flowerRight = document.querySelector("#flower-right");
+        const peopleContainer = document.querySelector("#people-container");
+        const peopleEducator = document.querySelector("#people-educator");
+        const peopleCreator = document.querySelector("#people-creator");
+        const peopleEngineer = document.querySelector("#people-engineer");
+        const peopleArtist = document.querySelector("#people-artist");
+        const peopleActivist = document.querySelector("#people-activist");
+        const jnjLogo = document.querySelector("#jnj-logo");
+        const confettiContainer = document.querySelector("#confetti-container");
+        const confettiLeft = document.querySelector("#confetti-left");
+        const confettiRight = document.querySelector("#confetti-right");
+
+
+        tl.call(() => {
+            jnjLogo.setAttribute('visible', false);
+            confettiContainer.setAttribute('visible', false);
+            confettiLeft.setRemove('animation-mixer');
+            confettiRight.setRemove('animation-mixer');
+
+            kodakContainer.setAttribute('visible', true);
+        }, null, 1)
+            .call(() => {
+                xeroxContainer.setAttribute('visible', true);
+            }, null, 1.5)
+            .call(() => {
+                bauschContainer.setAttribute('visible', true);
+            }, null, 1.9)
+            .call(() => {
+                flowerContainer.setAttribute('visible', true);
+                flowerLeft.setAttribute('animation-mixer', 'clip: Scene; timeScale: 0.4');
+                flowerRight.setAttribute('animation-mixer', 'clip: Scene; timeScale: 0.4');
+            }, null, 3.6)
+            .call(() => {
+                flowerLeft.removeAttribute('animation-mixer');
+                flowerRight.removeAttribute('animation-mixer');
+            }, null, 6.980)
+            .call(() => {
+                flowerContainer.setAttribute('visible', false);
+            }, null, 12)
+            .to(kodakContainer.object3D.scale, {
+                x: 0.0001, y: 0.0001, z: 0.0001, duration: 3, ease: "linear"
+            }, "<")
+            .to(xeroxContainer.object3D.scale, {
+                x: 0.0001, y: 0.0001, z: 0.0001, duration: 3, ease: "linear"
+            }, "<")
+            .to(bauschContainer.object3D.scale, {
+                x: 0.0001, y: 0.0001, z: 0.0001, duration: 3, ease: "linear"
+            }, "<")
+            .call(() => {
+                kodakContainer.setAttribute('visible', false);
+                xeroxContainer.setAttribute('visible', false);
+                bauschContainer.setAttribute('visible', false);
+            })
+            .call(() => {
+                peopleEducator.setAttribute('visible', true);
+            }, null, 15.3)
+            .call(() => {
+                peopleCreator.setAttribute('visible', true);
+                peopleEducator.setAttribute('animation', 'property: rotation; to: 0 360 0; loop: true; dur: 5000; easing: linear')
+            }, null, 15.8)
+            .to(peopleContainer.object3D.position, {
+                x: 0, duration: 3.4, ease: "linear"
+            }, "<")
+            .call(() => {
+                peopleEngineer.setAttribute('visible', true);
+                peopleCreator.setAttribute('animation', 'property: rotation; to: 0 360 0; loop: true; dur: 5000; easing: linear')
+            }, null, 16.4)
+            .call(() => {
+                peopleArtist.setAttribute('visible', true);
+                peopleEngineer.setAttribute('animation', 'property: rotation; to: 0 360 0; loop: true; dur: 5000; easing: linear')
+            }, null, 17.2)
+            .call(() => {
+                peopleActivist.setAttribute('visible', true);
+                peopleArtist.setAttribute('animation', 'property: rotation; to: 0 360 0; loop: true; dur: 5000; easing: linear')
+            }, null, 18.1)
+            .call(() => {
+                peopleActivist.setAttribute('animation', 'property: rotation; to: 0 360 0; loop: true; dur: 5000; easing: linear')
+            }, null, 18.7)
+            .call(() => {
+                peopleEducator.setAttribute('visible', false);
+                peopleCreator.setAttribute('visible', false);
+                peopleEngineer.setAttribute('visible', false);
+                peopleArtist.setAttribute('visible', false);
+                peopleActivist.setAttribute('visible', false);
+                peopleEducator.removeAttribute('animation');
+                peopleCreator.removeAttribute('animation');
+                peopleEngineer.removeAttribute('animation');
+                peopleArtist.removeAttribute('animation');
+                peopleActivist.removeAttribute('animation');
+            }, null, 23)
+            .call(() => {
+                jnjLogo.setAttribute('visible', true);
+            }, null, 24.2)
+            .call(() => {
+                confettiContainer.setAttribute('visible', true);
+                confettiLeft.setAttribute('animation-mixer', 'clip: *; timeScale: 0.4');
+                confettiRight.setAttribute('animation-mixer', 'clip: *; timeScale: 0.4');
+            }, null, 29.3)
 
         return tl;
     }
@@ -61,12 +262,12 @@
     AFRAME.registerComponent('timeline-control', {
         init: function () {
             const sound = new Howl({
-                src: ['../assets/script_intro.mp3']
+                src: ["../audio/Ending.mp3"]
             });
             // load captions from JSON file
 
             let captions = [];
-            loadCaptions(0).then((captions) => {
+            loadCaptions(7).then((captions) => {
                 // console.log(captions);
 
                 // Now you'll see the actual parsed captions
@@ -83,26 +284,19 @@
                 }, 100);
             });
 
+            //Load the time line
+            const timeline = buildTimeline();
 
             // Load the UI
             let UI = document.querySelector("#UI");
-            loadUI(0, UI);
-
-            //Load the time line
-
-
-
-            const timeline = buildTimeline();
-
-            // // Play on load
-
+            loadUI(7, UI);
 
             // Add onClick events
             let startBtn = document.getElementById("startBtn")
             startBtn.addEventListener("click", () => {
-                sound.play(); // play from the beginning
+                sound.play();
+                timeline.play(); // play from the beginning
                 startBtn.style.display = "none";
-                timeline.play();
             });
 
             const captionDisplay = document.getElementById("captionBox");
@@ -117,14 +311,8 @@
                 sound.stop(); // stop resets the playback and stops it
                 // timeline.stop(); // stop the timeline
 
-                window.location.href = `../map.html?startingLocation=xerox`; //LAST PART OF STRING CHANGES ON EACH PAGE
+                window.location.href = `../index.html`; //LAST PART OF STRING CHANGES ON EACH PAGE
             });
-
-
-
-
-
-
         }
     });
 

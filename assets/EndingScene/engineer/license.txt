@@ -1,0 +1,8 @@
+Model Information:
+* title:	Gear
+* source:	https://sketchfab.com/3d-models/gear-093f8acf078145e2a403b3756e46f0b7
+* author:	saurabh.buradkar7 (https://sketchfab.com/saurabh.buradkar7)
+
+Model License:
+* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
+* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works

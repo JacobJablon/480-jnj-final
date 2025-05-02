@@ -35,17 +35,17 @@
         renderer="antialias: true; alpha: true" id="scene">
 
         <a-assets>
-            <a-asset-item id="xeroxLogo" src="../assets/xeroxlogo/result.gltf"></a-asset-item>
-            <a-asset-item id="xerox-Tower" src="../assets/xeroxT/result.gltf"></a-asset-item>
-            <a-asset-item id="paper" src="../assets/paper/scene.gltf"></a-asset-item>
-            <a-asset-item id="xeroxAlto" src="../assets/xerox_alto/scene.gltf"></a-asset-item>
-            <a-asset-item id="declineGraph" src="../assets/DeclineG/DeclineG.gltf"></a-asset-item>
-            <a-asset-item id="kodak-Tower" src="../assets/kodakT/result.gltf"></a-asset-item>
-            <a-asset-item id="bal-Tower" src="../assets/bLHeadQuarters/result.gltf"></a-asset-item>
-            <!-- <a-asset-item id="expl" src="../assets/explosion/scene.gltf"></a-asset-item> -->
-            <img id="haloidImg" src="../assets/haloid.jpg" />
-            <img id="chesterImg" src="../assets/chesterC.jpg" />
-            <img id="jnjlogo" src="../assets/jnjLogo.PNG" />
+            <a-asset-item id="xeroxLogo" src="../assets/XeroxScene/xeroxlogo/result.gltf"></a-asset-item>
+            <a-asset-item id="xerox-Tower" src="../assets/XeroxScene/xeroxT/result.gltf"></a-asset-item>
+            <a-asset-item id="paper" src="../assets/XeroxScene/paper/scene.gltf"></a-asset-item>
+            <a-asset-item id="xeroxAlto" src="../assets/XeroxScene/xerox_alto/scene.gltf"></a-asset-item>
+            <a-asset-item id="declineGraph" src="../assets/XeroxScene/DeclineG/DeclineG.gltf"></a-asset-item>
+            <a-asset-item id="kodak-Tower" src="../assets/XeroxScene/kodakT/result.gltf"></a-asset-item>
+            <a-asset-item id="bal-Tower" src="../assets/XeroxScene/bLHeadQuarters/result.gltf"></a-asset-item>
+            <!-- <a-asset-item id="expl" src="../assets/XeroxScene/explosion/scene.gltf"></a-asset-item> -->
+            <img id="haloidImg" src="../assets/XeroxScene/haloid.jpg" />
+            <img id="chesterImg" src="../assets/XeroxScene/chesterC.jpg" />
+            <img id="jnjlogo" src="../assets/XeroxScene/jnjLogo.PNG" />
 
         </a-assets>
 
@@ -154,6 +154,7 @@
 
         // At the next step in the timeline, the animation function will be called
         tl.call(() => {
+            declineGraph.setAttribute('visible', false);
             container1.setAttribute('visible', true);
         }, null, 2) // 1 second later
 

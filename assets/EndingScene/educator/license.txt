@@ -1,0 +1,8 @@
+Model Information:
+* title:	School Building
+* source:	https://sketchfab.com/3d-models/school-building-2e297d37204e4d9f85a6fb52083f16e8
+* author:	saurabh.buradkar7 (https://sketchfab.com/saurabh.buradkar7)
+
+Model License:
+* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
+* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works

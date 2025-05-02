@@ -1,0 +1,11 @@
+Model Information:
+* title:	Canon PowerShot G9 X Mark II Digital Camera
+* source:	https://sketchfab.com/3d-models/canon-powershot-g9-x-mark-ii-digital-camera-c91d721ba8c6499381005d9fa608927d
+* author:	lion.gelders (https://sketchfab.com/lion.gelders)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Canon PowerShot G9 X Mark II Digital Camera" (https://sketchfab.com/3d-models/canon-powershot-g9-x-mark-ii-digital-camera-c91d721ba8c6499381005d9fa608927d) by lion.gelders (https://sketchfab.com/lion.gelders) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

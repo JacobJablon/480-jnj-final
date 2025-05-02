@@ -1,0 +1,8 @@
+Model Information:
+* title:	Construction Worker
+* source:	https://sketchfab.com/3d-models/construction-worker-ec3c8d6bab6841648dd10259c8708a08
+* author:	saurabh.buradkar7 (https://sketchfab.com/saurabh.buradkar7)
+
+Model License:
+* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
+* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works
