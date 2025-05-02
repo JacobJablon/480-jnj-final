@@ -54,11 +54,9 @@
                 </a-entity>
 
                 <a-entity id="gradHats">
-                    <a-entity id="grad1" visible="false" gltf-model="#grad-cap" position="0 5 0" scale="1 1 1">
+                    <a-entity id="grad1" visible="false" gltf-model="#grad-cap" position="0 7 0" scale="1 1 1">
                     </a-entity>
-                    <a-entity id="grad2" visible="false" gltf-model="#grad-cap" position="0 5 0" scale="1 1 1">
-                    </a-entity>
-                    <a-entity id="grad3" visible="false" gltf-model="#grad-cap" position="0 5 0" scale="1 1 1">
+                    <a-entity id="grad2" visible="false" gltf-model="#grad-cap" position="0 7 0" scale="1 1 1">
                     </a-entity>
 
                 </a-entity>
@@ -75,22 +73,12 @@
                     </a-entity>
 
                 </a-entity>
-                <a-entity id="creatorFLower" visible="false">
-                    <a-entity gltf-model="#flower" position="0 0 0" scale="1 1 1">
-                    </a-entity>
+                <a-entity id="flowerContainer" position="0 0 0">
 
-                    <a-entity id="creator" gltf-model="#creatorObj" position="0 0 0" scale="1 1 1">
-                    </a-entity>
                 </a-entity>
 
 
-                <a-entity id="engineerFLower" visible="false">
-                    <a-entity gltf-model="#flower" position="0 0 0" scale="1 1 1">
-                    </a-entity>
 
-                    <a-entity id="engineer" gltf-model="#engineerObj" position="0 0 0" scale="1 1 1">
-                    </a-entity>
-                </a-entity>
 
             </a-entity>
     </a-scene>
@@ -116,13 +104,12 @@
 
         const medContainer = document.querySelector("#medFlower")
         const medFlower = document.querySelector("#medFlower .flower")
-        const creatorContainer = document.querySelector("#creatorFLower")
-        const creatorFlower = document.querySelector("#creatorFLower .flower")
+        const creatorContainer = document.querySelector("#flowerContainer")
+        const flowerContainer = document.querySelector("#flowerContainer .flower")
         const engineerContainer = document.querySelector("#engineerFLower")
         const engineerFlower = document.querySelector("#engineerFLower .flower")
         const grad1 = document.querySelector("#grad1")
         const grad2 = document.querySelector("#grad2")
-        const grad3 = document.querySelector("#grad3")
         const medKit = document.querySelector("#medKit")
         // At the next step in the timeline, the animation function will be called
         tl.call(() => {
@@ -141,19 +128,62 @@
             .to(medKit.object3D.scale, { x: 5, y: 5, z: 5, duration: 10, ease: "power1.out" }, ">")
             .to(medKit.object3D.position, { z: 1, y: -1, duration: 3, ease: "power1.out" }, "<+=2")
             .to(medKit.object3D.position, { z: -2, duration: 5, ease: "power1.out" }, ">+=2")
+            .call(() => {
+                grad2.setAttribute('visible', true);
+            }, null, ">")
             .to(grad2.object3D.position, { y: -1, duration: 3, ease: "power1.out" }, ">")
             .to(grad2.object3D.scale, { x: 0.5, y: 0.5, z: 0.5, duration: 3, ease: "power1.out" }, "")
-            .to(medContainer.object3D.position, { y: 3, duration: 2, ease: "power1.out" }, ">+=2")
-            .to(medContainer.object3D.scale, { x: 1.5, y: 1.5, z: 1.5, duration: 2, ease: "power1.out" }, ">")
+            .to(creatorContainer.object3D.position, { y: 3, duration: 2, ease: "power1.out" }, ">+=2")
+            .to(creatorContainer.object3D.scale, { x: 1.5, y: 1.5, z: 1.5, duration: 2, ease: "power1.out" }, ">")
             .call(() => {
-                medFlower.setAttribute('animation-mixer', 'clip: Scene; timeScale: 0.4');
+                flowerContainer.setAttribute('animation-mixer', 'clip: Scene; timeScale: 0.4');
             }, null, ">")
             .call(() => {
-                medFlower.removeAttribute('animation-mixer');
+                flowerContainer.removeAttribute('animation-mixer');
             }, null, ">+3.980")
-            .to(medKit.object3D.scale, { x: 5, y: 5, z: 5, duration: 10, ease: "power1.out" }, ">")
-            .to(medKit.object3D.position, { z: 1, y: -1, duration: 3, ease: "power1.out" }, "<+=2")
-            .to(medKit.object3D.position, { z: -2, duration: 5, ease: "power1.out" }, ">+=2")
+            .call(() => {
+                for (let i = 0; i < 30; i++) {
+
+                    let coordX = Math.random() * 5;
+                    let coordZ = Math.random() * 5;
+                    // let coordY = Math.random() * 5;
+
+                    let hmtl = `
+            <a-entity
+                class="flower"
+                gltf-model="#flower"
+                scale="1 1 1"
+                rotation="90 0 0"
+                position="${coordX} 0 ${coordZ}">
+            </a-entity>
+            `;
+
+                    flowerContainer.innerHTML += html
+                };
+                //paper swirl function ************
+            }, null, ">+=10")
+            .call(() => {
+
+                movers.forEach((el) => {
+                    const obj = el.object3D;
+                    const startPos = obj.position.clone();
+
+                    // Create a nested timeline for each mover
+                    const moveTl = gsap.timeline({ repeat: 1, });
+
+                    moveTl.to(obj.position, {
+                        z: startPos.z + 5,
+                        duration: 0.5,
+                        ease: "power1.inOut"
+                    })
+                        .call(() => {
+                            obj.position.set(startPos.x, startPos.y, startPos.z);
+                        });
+
+                    // Add the nested timeline to the main timeline
+                    tl.add(moveTl, "<+1");
+                }, null, ">+=5") // “>” makes it run after everything else
+            });
 
 
 

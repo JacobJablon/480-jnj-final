@@ -34,7 +34,7 @@
     <a-scene arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' vr-mode-ui="enabled: false"
         renderer="antialias: true; alpha: true" id="scene">
 
-        <a-assets>
+        <a-assets timeout="10000">
             <a-asset-item id="xeroxLogo" src="../assets/XeroxScene/xeroxlogo/result.gltf"></a-asset-item>
             <a-asset-item id="xerox-Tower" src="../assets/XeroxScene/xeroxT/result.gltf"></a-asset-item>
             <a-asset-item id="paper" src="../assets/XeroxScene/paper/scene.gltf"></a-asset-item>
@@ -53,7 +53,7 @@
 
         <!-- Overall container entity that holds every other entity -->
         <a-entity id="everything-container" rotation="0 0 0"
-            gps-entity-place="longitude: -77.693504; latitude: 43.061353;">
+            gps-new-entity-place="longitude: -77.601582; latitude: 43.157288;">
             <a-entity>
                 <a-entity id="container1" position="0 2.5 0" visible="false">
 
