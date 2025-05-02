@@ -155,7 +155,7 @@
         // At the next step in the timeline, the animation function will be called
         tl.call(() => {
             container1.setAttribute('visible', true);
-        }, null, 0) // 1 second later
+        }, null, 2) // 1 second later
 
             .to(kt.object3D.position, { x: -3, y: 2, duration: 3, ease: "power1.out" }, ">+=10")
             .to(blt.object3D.position, { x: 3, y: 2, duration: 3, ease: "power1.out" }, "<")
@@ -282,6 +282,7 @@
             document.getElementById("restartBtn").addEventListener("click", () => {
                 sound.stop(); // stop resets the playback and stops it
                 sound.play();
+                timeline.revert(); // revert state of objects to their original state
                 timeline.restart();// play from the beginning
             });
 

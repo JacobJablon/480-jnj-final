@@ -1,0 +1,8 @@
+Model Information:
+* title:	GLASS EYE
+* source:	https://sketchfab.com/3d-models/glass-eye-b9ae12ccbd81468b914632436f8f4721
+* author:	asgor09 (https://sketchfab.com/asgor09)
+
+Model License:
+* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
+* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works
