@@ -78,7 +78,7 @@ const drawRoute = () => {
           if (utils.isLocationClose(userCoords, utils.poiLocations[6])) {
             poiPage = "./poiLocations/Envative.html";
           }
-        } else if (startingLocation == "envative") {
+        } else if (startingLocation == "Envative") {
           route = [utils.poiLocations[5], utils.poiLocations[6]];
           start = utils.poiLocations[5].name;
           end = utils.poiLocations[6].name;
