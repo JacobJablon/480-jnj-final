@@ -42,7 +42,6 @@
         </a-assets>
 
         <a-camera gps-new-camera='gpsMinDistance: 10'></a-camera>
-
         <!-- Overall container entity that holds every other entity -->
         <a-entity id="everything-container" rotation="0 0 0">
             <a-entity position="0 0 -3" scale="0.1 0.1 0.1" gltf-model="#speaker" class="clickable" listener></a-entity>
@@ -73,7 +72,7 @@
     }
 
     const sound = new Howl({
-                src: ["../audio/midpoint2.mp3"],
+                src: ["../audio/Envative.mp3"],
 
             });
 
@@ -98,7 +97,7 @@
             // load captions from JSON file
             let captions = [];
             //change for each scene
-            loadCaptions(7).then((captions) => {
+            loadCaptions(5).then((captions) => {
                 // console.log(captions);
                 // Now you'll see the actual parsed captions
                 setInterval(() => {
@@ -119,7 +118,7 @@
             const timeline = buildTimeline();
 
             let UI = document.querySelector("#UI");
-            loadUI(7, UI);
+            loadUI(5, UI);
 
             // Add onClick events
             let startBtn = document.getElementById("startBtn")
