@@ -23,10 +23,10 @@ const loadUI = (place, parent) => {
   const html = `
 <div id="topUI" class="fixed-grid has-4-cols">
         <div class="grid is-column-gap-4">
+            <div id="titleBox" class="box cell is-col-span-2" class="cell">${locations[place].title}</div> 
             <button id="mapBtn" class="cell button mt-2"><span class="icon is-large">
                     <i class="fa-solid fa-map-location-dot fas fa-lg"></i>
                 </span></button>
-            <div id="titleBox" class="box cell is-col-span-3" class="cell">${locations[place].title}</div>
         </div>
  </div>
 
