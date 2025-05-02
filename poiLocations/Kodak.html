@@ -40,8 +40,8 @@
             <a-asset-item id="bal-Tower" src="../assets/XeroxScene/bLHeadQuarters/result.gltf"></a-asset-item>
             <a-asset-item id="group" src="../assets/Kodakscene/manObj/scene.gltf"></a-asset-item>
             <a-asset-item id="man" src="../assets/Kodakscene/groupObj/scene.gltf"></a-asset-item>
-            <a-asset-item id="canon-camera" src="../assets/Kodakscene/canonCam/scene.gltf"></a-asset-item>
-            <a-asset-item id="sony-camera" src="../assets/Kodakscene/sonyCam/scene.gltf"></a-asset-item>
+            <!-- <a-asset-item id="canon-camera" src="../assets/Kodakscene/canonCam/scene.gltf"></a-asset-item>
+            <a-asset-item id="vintage-camera" src="../assets/Kodakscene/vintage_camera/scene.gltf"></a-asset-item> -->
             <a-asset-item id="kodak-camera" src="../assets/Kodakscene/kodakCam/scene.gltf"></a-asset-item>
             <a-asset-item id="fuji-camera" src="../assets/Kodakscene/fujiCam/scene.gltf"></a-asset-item>
             <a-asset-item id="decline-graph" src="../assets/XeroxScene/DeclineG/DeclineG.gltf"></a-asset-item>
@@ -54,65 +54,81 @@
         <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
 
         <!-- Overall container entity that holds every other entity -->
-        <a-entity id="everything-container" rotation="0 0 0" position="0 0 -15">
+        <a-entity id="everything-container" rotation="0 0 0" position="0 0 -10">
             <a-entity id="buildingContainer" visible="false">
-                <a-entity id="kT">
-                    <a-entity gltf-model="#kodak-Tower" position="0 0 0" scale="1 1 1">
+                <a-entity id="kT" position="0 0 0">
+                    <a-entity gltf-model="#kodak-Tower" scale="2 1.5 2">
                     </a-entity>
-                    <a-entity position="0 2.3 0" text="value:Kodak; width:10; align:center ">
+                    <a-entity position="0 3.5 0" text="value:Kodak; width:10; align:center ">
                     </a-entity>
-                    <a-entity id="groupK" gltf-model="#group" position="-0.30116 0 -0.09705" scale="0.1 0.1 0.1">
+                    <a-entity id="groupK" class="groupMover" gltf-model="#group" position="-0.30116 0 -0.09705"
+                        scale="0.1 0.1 0.1">
+                    </a-entity>
+                    <a-entity id="kodakGraph" gltf-model="#decline-graph" position="0 4.5 0" scale="0.01 0.01 0.01"
+                        rotation="90 0 0">
                     </a-entity>
                 </a-entity>
-                <a-entity id="xT">
-                    <a-entity gltf-model="#xerox-Tower" position="0 0 3" scale="0.01 0.01 0.01">
+                <a-entity id="xT" position="-3 0 0">
+                    <a-entity gltf-model="#xerox-Tower" scale="0.02 0.015 0.02">
                     </a-entity>
-                    <a-entity position="0 2.5 0" text="value:Xerox; width:10; align:center ">
+                    <a-entity position="0 3 0" text="value:Xerox; width:10; align:center ">
                     </a-entity>
-                    <a-entity id="groupT" gltf-model="#group" position="-0.30116 0 -0.09705" scale="0.1 0.1 0.1"">
+                    <a-entity id="groupT" class="groupMover" gltf-model="#group" position="-0.30116 0 -0.09705"
+                        scale="0.1 0.1 0.1">
+                    </a-entity>
+                    <a-entity gltf-model="#decline-graph" position="0 4 0" scale="0.01 0.01 0.01" rotation="90 0 0">
                     </a-entity>
 
                 </a-entity>
-                <a-entity id=" blT">
-                        <a-entity gltf-model="#bal-Tower" position="0 0 0" scale="0.02 0.02 0.02">
-                        </a-entity>
-                        <a-entity position="0 2.5 0" text="value:Bauch&Lomb; width:10; align:center ">
-                        </a-entity>
-                        <a-entity id="groupB" gltf-model="#group" position="-0.30116 0 -0.09705" scale="0.1 0.1 0.1">
-                        </a-entity>
+                <a-entity id="blT" position="3 0 0">
+                    <a-entity gltf-model="#bal-Tower" scale="0.02 0.02 0.02">
                     </a-entity>
-                </a-entity>
-
-                <a-entity id="imagesContainer" visible="false" position="0 3 0">
-                    <a-image id="kodak-img" src="#kodakView" visible="false" geometry="" rotation="0 20 0"
-                        scale="3.716 3.716 3.716" material="" position="-2.57364 0 5.08327"></a-image>
-                    <a-image id="george-img" src="#georgeE" visible="false" geometry="" rotation="0 -20 0"
-                        scale="3.716 3.716 3.716" position="1.54013 -0.11264 5"></a-image>
-                    <a-image id="push-img" src="#youPush" visible="false" geometry="" rotation="0 -20 0"
-                        scale="3.716 3.716 3.716" position="1.54013 -0.11264 5"></a-image>
-                </a-entity>
-
-                <a-entity id="kodakCam" gltf-model="#kodak-camera" position="0 0 0" scale="0.01 0.01 0.01">
-                </a-entity>
-
-                <a-entity id="cameraContainer" visible="false" position="0 0 0">
-                    <a-entity id="fujiCamera" gltf-model="#fuji-camera" position="0 0 0" scale="0.01 0.01 0.01">
+                    <a-entity position="0 3 0" text="value:Bauch&Lomb; width:10; align:center ">
                     </a-entity>
-                    <a-entity id="cannonCam" gltf-model="#canon-camera" position="0 0 0" scale="0.01 0.01 0.01">
+                    <a-entity id="groupB" class="groupMover" gltf-model="#group" position="-0.30116 0 -0.09705"
+                        scale="0.1 0.1 0.1">
                     </a-entity>
-                    <a-entity id="sonyCam" gltf-model="#sony-camera" position="0 0 0" scale="0.01 0.01 0.01">
+                    <a-entity gltf-model="#decline-graph" position="0 4 0" scale="0.01 0.01 0.01" rotation="90 0 0">
                     </a-entity>
                 </a-entity>
 
-                <a-entity id="groupK" gltf-model="#group" position="0 0 0" scale="1 1 1">
+            </a-entity>
+
+            <a-entity id="imagesContainer" visible="false" position="0 3 0">
+                <a-image id="kodak-img" src="#kodakView" visible="false" rotation="0 0 0" scale="3.716 3.716 3.716"
+                    material="" position="2.6 0 5"></a-image>
+                <a-image id="george-img" src="#georgeE" visible="false" rotation="0 -20 0" scale="3.716 3.716 3.716"
+                    position="1.54013 -0.11264 5"></a-image>
+                <a-image id="push-img" src="#youPush" visible="false" rotation="0 0 0" scale="3.7 3.7 3.7 "
+                    position="1 4 5"></a-image>
+            </a-entity>
+
+
+
+
+            <!-- <a-entity id="cameraContainer" visible="false" position="0 0 0" scale="0.1 0.1 0.1">
+                <a-entity id="fujiCamera" gltf-model="#fuji-camera" rotation="180 0 180" position="0 0 0"
+                    scale="0.1 0.1 0.1">
                 </a-entity>
-
-
-
-                <a-entity id="declineGraph" gltf-model="#decline-graph" visible="false" position="0 4 0"
-                    scale="0.1 0.1 0.1" material="transparent: true; opacity: 0" rotation="90 0 0">
+                <a-entity id="cannonCam" gltf-model="#canon-camera" position="-3 0 0" scale="0.02 0.02 0.02">
                 </a-entity>
+                <a-entity id="vintageCam" gltf-model="#vintage-camera" position="-3 0 1" rotation="0 90 0"
+                    scale="15 15 15">
+                </a-entity>
+            </a-entity> -->
 
+            <a-entity id="kodakSuccessContainer">
+                <a-entity id="kodakCam" gltf-model="#kodak-camera" visible="false" position="-3 0 0" scale="10 10 10">
+                </a-entity>
+                <a-entity id="manFree" gltf-model="#man" visible="false" position="-3 -1 0" scale="1.7 1.7 1.7">
+                </a-entity>
+                <a-entity id="groupFree" gltf-model="#group" visible="false" position="2 0 0" scale="1 1 1">
+                </a-entity>
+            </a-entity>
+
+
+
+        </a-entity>
 
     </a-scene>
 
@@ -122,7 +138,7 @@
 
 </body>
 
-<script type="module">
+<script>
 
     window.onload = () => {
         document.querySelector('a-scene').setAttribute('timeline-control', '');
@@ -136,94 +152,118 @@
         const tl = gsap.timeline({ paused: true });
 
         const images = document.querySelector("#imagesContainer");
-        const Img = document.querySelector("#logoImg");
-        // const kt = document.querySelector("#kT");
-        // const xt = document.querySelector("#xT");
-        // const blt = document.querySelector("#blT");
-        // const haloidImg = document.querySelector("#haloid-img");
-        // const chesterImg = document.querySelector("#chester-img");
-        // // const paperObj = document.querySelector("#paperObj");
-        // const paperContainer = document.querySelector("#paper-container");
-        // const xeroxLogo = document.querySelector("#xerox-Logo");
-        // const xeroxB = document.querySelector("#xeroxB");
-        // const declineGraph = document.querySelector("#decline-Graph");
-        // const container2 = document.querySelector("#container2");
-        // const xeroxAlto = document.querySelector("#xerox-Alto");
+        const kodakImg = document.querySelector("#kodak-img");
+        const georgeImg = document.querySelector("#george-img");
+        const kodakCam = document.querySelector("#kodakCam");
+        const pushImg = document.querySelector("#push-img");
+        // const fujiCam = document.querySelector("#fujiCamera");
+        // const cannonCam = document.querySelector("#cannonCam");
+        // const vintageCam = document.querySelector("#vintageCam");
+        const groupK = document.querySelector("#groupK");
+        const groupT = document.querySelector("#groupT");
+        const groupB = document.querySelector("#groupB");
+        const buildingContainer = document.querySelector("#buildingContainer");
+        // const kT = document.querySelector("#kT");
+        // const xT = document.querySelector("#xT");
+        // const blT = document.querySelector("#blT");
+        const groupFree = document.querySelector("#groupFree");
+        const manFree = document.querySelector("#manFree");
+        const kodakSuccessContainer = document.querySelector("#kodakSuccessContainer");
+        const cameraContainer = document.querySelector("#cameraContainer");
+
+        const movers = document.querySelectorAll('.groupMover');
 
 
         tl.call(() => {
             images.setAttribute('visible', true);
-        }, null, 0) // 1 second later
+        }, null, 0)
+            .call(() => {
+                kodakImg.setAttribute('visible', true);
+            }, null, ">+=1")
+            .call(() => {
+                kodakImg.setAttribute('visible', false);
+            }, null, 9)
+            .call(() => {
+                kodakCam.setAttribute('visible', true);
+                georgeImg.setAttribute('visible', true);
+            }, null, "<")
+            .to(kodakCam.object3D.rotation, {
+                y: Math.PI * 6,
+                duration: 11
+            }, null, ">")
+            .call(() => {
+                pushImg.setAttribute('visible', true);
+            }, null, 24)
+            .to(kodakCam.object3D.position, {
+                y: 3,
+                duration: 2
+            }, null, ">+=8")
+            .to(kodakCam.object3D.scale, {
+                x: 3, y: 3, z: 3, duration: 4, ease: "power1.out"
+            }, "<")
+            .call(() => {
+                manFree.setAttribute('visible', true);
+            }, null, "<+=3")
+            .call(() => {
+                georgeImg.setAttribute('visible', false);
+                pushImg.setAttribute('visible', false);
+                groupFree.setAttribute('visible', true);
+            }, null, ">+3")
+            .to(kodakCam.object3D.position, {
+                x: 3,
+                y: 2,
+                duration: 3
+            }, null, ">")
+            .to(kodakCam.object3D.scale, {
+                x: 6, y: 6, z: 6, duration: 3, ease: "power1.out"
+            }, "<")
+            // .call(() => {
+            //     cameraContainer.setAttribute('visible', true);
+            // }, null, "<")
+            // .to(cameraContainer.object3D.scale, {
+            //     x: 1.5, y: 1.5, z: 1.5, duration: 2, ease: "bounce.out"
+            // }, "<")
+            .call(() => {
+                // cameraContainer.setAttribute('visible', false);
+                kodakSuccessContainer.setAttribute('visible', false);
+            }, null, 45)
+            .call(() => {
+                buildingContainer.setAttribute('visible', true);
+            }, null, "<")
+            .to(buildingContainer.object3D.scale, {
+                x: 2, y: 2, z: 2, duration: 2, ease: "bounce.out"
+            }, ">")
+            .to(buildingContainer.object3D.scale, {
+                x: 0.6, y: 0.6, z: 0.6, duration: 22, ease: "steps(11)",
+            }, ">+=5")
+            .call(() => {
 
-        //     .to(kt.object3D.position, { x: -3, y: 2, duration: 3, ease: "power1.out" }, ">+=10")
-        //     .to(blt.object3D.position, { x: 3, y: 2, duration: 3, ease: "power1.out" }, "<")
-        //     .to(xt.object3D.position, { y: 3, duration: 3, ease: "power1.out" }, "<")
-        //     .call(() => {
-        //         container1.setAttribute('visible', false);
-        //     }, null, 31)
-        //     .to(xeroxLogo.object3D.scale, {
-        //         x: 10, y: 10, z: 10, duration: 3, ease: "elastic.out"
-        //     }, ">")
+            }, null, "<+=4")
 
-        //     .to(xeroxLogo.object3D.scale, {
-        //         x: 0.1, y: 0.1, z: 0.1, duration: 5, ease: "linear"
-        //     }, 48)// section 2
-        //     .call(() => {
-        //         container2.setAttribute('visible', true);
-        //     }, null, ">")
-        //     // 1 second later
-        //     .call(() => {
-        //         chesterImg.setAttribute('visible', true);
-        //     }, null, 55) // 1 second later
-        //     .call(() => {
-        //         haloidImg.setAttribute('visible', true);
-        //     }, null, ">+=15") // 1 second later
-        //     .call(() => {
-        //         container2.setAttribute('visible', false);
-        //     }, null, ">+=8")
-        //     .call(() => {
-        //         xeroxB.setAttribute('visible', true);
-        //     }, null, ">")
-        //     .call(() => {
-        //         for (let i = 0; i < 60; i++) {
+        movers.forEach((el) => {
+            const obj = el.object3D;
+            const startPos = obj.position.clone();
 
-        //             let coordX = Math.random() < 0.5 ? Math.round(Math.random() * 10) : Math.round(Math.random() * -10);
-        //             let coordZ = Math.random() < 0.5 ? Math.round(Math.random() * 10) : Math.round(Math.random() * -10);
-        //             let duration = 2000 + Math.round(Math.random() * 2000);
-        //             let coordY = Math.random() * 30;
+            // Create a nested timeline for each mover
+            const moveTl = gsap.timeline({ repeat: 30, });
 
-        //             let paperContainerHTML = `
-        //     <a-entity
-        //         class="paper"
-        //         gltf-model="#paper"
-        //         scale="1 1 1"
-        //         rotation="90 0 0"
-        //         position="${coordX} ${coordY} ${coordZ}"
-        //         animation="property: rotation; to: 90 360 0; loop: true; dur: ${duration}; easing: linear">
-        //     </a-entity>
-        //     `;
+            moveTl.to(obj.position, {
+                z: startPos.z + 5,
+                duration: 0.5,
+                ease: "power1.inOut"
+            })
+                .call(() => {
+                    obj.position.set(startPos.x, startPos.y, startPos.z);
+                });
 
-        //             paperContainer.innerHTML += paperContainerHTML
-        //         };
-        //         //paper swirl function ************
-        //     }, null, ">+=10")
-        //     .call(() => {
-        //         xeroxB.setAttribute('visible', false);
-        //         xeroxAlto.setAttribute('visible', true);
-        //     }, null, ">+7")
-        //     .call(() => {
-        //         paperContainer.setAttribute('visible', false);
-        //     }, null, ">+8")
-        //     .call(() => {
-        //         //call explosion
-        //         xeroxAlto.setAttribute('visible', false);
-        //     }, null, ">+15")
-        //     .call(() => {
-        //         declineGraph.setAttribute('visible', true);
-        //     }, null, ">")
+            // Add the nested timeline to the main timeline
+            tl.add(moveTl, "<"); // “>” makes it run after everything else
+        });
 
 
-        // 1 second later
+
+
+
 
         return tl;
     }
@@ -280,8 +320,9 @@
             document.getElementById("restartBtn").addEventListener("click", () => {
                 sound.stop(); // stop resets the playback and stops it
                 sound.play();
-                timeline.revert();
-                timeline.restart();// play from the beginning
+                timeline.pause();
+                // timeline.revert();
+                // timeline.restart();// play from the beginning
             });
 
             document.getElementById("mapBtn").addEventListener("click", () => {
@@ -294,8 +335,7 @@
         }
     });
 
-    // Attach the component to the scene
-    document.querySelector('a-scene').setAttribute('timeline-control', '');
+
 </script>
 
 </html>
