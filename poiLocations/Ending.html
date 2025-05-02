@@ -59,7 +59,7 @@
         <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
 
         <!-- Overall container entity that holds every other entity -->
-        <a-entity id="everything-container" rotation="0 0 0" position="0 0 -10">
+        <a-entity id="everything-container" rotation="0 0 0" position="0 0 -10" gps-new-entity-place="latitude: 43.15359366235387; longitude: -77.60241733823288">
 
             <a-entity id="kodak-container" position="-7 0 2" visible="false">
                 <a-entity
@@ -172,8 +172,8 @@
         tl.call(() => {
             jnjLogo.setAttribute('visible', false);
             confettiContainer.setAttribute('visible', false);
-            confettiLeft.setRemove('animation-mixer');
-            confettiRight.setRemove('animation-mixer');
+            confettiLeft.removeAttribute('animation-mixer');
+            confettiRight.removeAttribute('animation-mixer');
 
             kodakContainer.setAttribute('visible', true);
         }, null, 1)

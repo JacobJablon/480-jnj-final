@@ -33,7 +33,7 @@ const drawRoute = () => {
           route = [userCoords, utils.poiLocations[0]];
           start = "Your location";
           end = utils.poiLocations[0].name;
-          zoom = 11;
+          zoom = 16;
           if (utils.isLocationClose(userCoords, utils.poiLocations[0])) {
             poiPage = "./poiLocations/Xerox.html";
           }
