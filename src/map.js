@@ -60,7 +60,7 @@ const drawRoute = () => {
           end = utils.poiLocations[3].name;
           zoom = 15;
           if (utils.isLocationClose(userCoords, utils.poiLocations[3])) {
-            poiPage = "./poiLocations/Itx.html";
+            poiPage = "./poiLocations/ITX_Corp.html";
           }
         } else if (startingLocation == "itx") {
           route = [utils.poiLocations[3], utils.poiLocations[4]];
@@ -68,7 +68,7 @@ const drawRoute = () => {
           end = utils.poiLocations[4].name;
           zoom = 15;
           if (utils.isLocationClose(userCoords, utils.poiLocations[6])) {
-            poiPage = "./poiLocations/Envative.html";
+            poiPage = "./poiLocations/MillerQuad.html";
           }
         } else if (startingLocation == "millerQuad") {
           route = [utils.poiLocations[4], utils.poiLocations[5]];
