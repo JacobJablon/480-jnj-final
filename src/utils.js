@@ -22,7 +22,7 @@ const poiLocations = [
 ];
 
 const isLocationClose = ({ userLat, userLon }, location) => {
-  const maxDistanceKm = 5;
+  const maxDistanceKm = 1;
   const toRad = (angle) => angle * (Math.PI / 180);
   const R = 6371; // Earth's radius in km
 
@@ -36,8 +36,8 @@ const isLocationClose = ({ userLat, userLon }, location) => {
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   const distance = R * c;
 
-//   return distance <= maxDistanceKm;
-    return true;
+  return distance <= maxDistanceKm;
+  //return true;
 };
 
 const setupMap = (route, zoom = 15, userCoords) => {
