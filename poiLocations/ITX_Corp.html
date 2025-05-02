@@ -44,12 +44,14 @@
         <a-camera gps-new-camera='gpsMinDistance: 10'></a-camera>
 
         <!-- Overall container entity that holds every other entity -->
-        <a-entity id="everything-container" rotation="0 0 0">
-            //gps-new-entity-place="longitude: -77.60517576089865; latitude: 43.15441898007234;"
+        <a-entity id="everything-container" rotation="0 0 0" gps-new-entity-place="longitude: -77.60622208016815; latitude: 43.15646653270117;">
+            <!-- //gps-new-entity-place="longitude: -77.60517576089865; latitude: 43.15441898007234;" -->
 
             <a-entity position="0 0 -3" scale="0.1 0.1 0.1" gltf-model="#speaker" class="clickable" listener></a-entity>
+        <a-entity cursor="fuse: false; rayOrigin: mouse" position="0 0 -1"></a-entity>
 
-        </a-entity>
+    </a-entity>
+    
     </a-scene>
 
     <div id="UI">
@@ -72,15 +74,29 @@
         return tl;
     }
 
+    const sound = new Howl({
+                src: ["../audio/ITX_Corp.mp3"],
+
+            });
+
+            AFRAME.registerComponent("listener", {
+                init: function () {
+                    // this.el.addEventListener("model-loaded", () => {
+                        this.el.addEventListener("click", () => {
+                           sound.play();
+                            console.log("Sound playing!");
+                            
+                        });
+                    // });
+                }
+            });
+            // Load the UI
 
     AFRAME.registerComponent('timeline-control', {
         init: function () {
 
 
-            const sound = new Howl({
-                src: ["../audio/Kodak.mp3"],
-
-            });
+          
             // load captions from JSON file
             let captions = [];
             //change for each scene
@@ -99,17 +115,7 @@
                 }, 100);
             });
 
-            AFRAME.registerComponent("listener", {
-                init: function () {
-                    this.el.addEventListener("model-loaded", () => {
-                        this.el.addEventListener("click", () => {
-                            sound.play();
-                            console.log("Sound playing!");
-                        });
-                    });
-                }
-            });
-            // Load the UI
+            
 
             //Load the time line
             const timeline = buildTimeline();
@@ -138,7 +144,7 @@
                 sound.stop(); // stop resets the playback and stops it
                 // timeline.stop(); // stop the timeline
 
-                window.location.href = `../map.html?startingLocation=kodak`;
+                window.location.href = `../map.html?startingLocation=Itx`;
             });
 
         }

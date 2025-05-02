@@ -4,14 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RoCo Quad</title>
+    <title>Xerox</title>
     <!-- A-Frame -->
     <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
     <!-- Pure three.js code that the A-Frame components use for location-based AR -->
     <script src='https://raw.githack.com/AR-js-org/AR.js/3.4.5/three.js/build/ar-threex-location-only.js'></script>
+    <!-- we use three.js to handle raycasting
+    <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.min.js"></script> -->
+
     <!-- AR.js A-Frame components (recommended to use version 3.4.5, rather than master) -->
     <script src='https://raw.githack.com/AR-js-org/AR.js/3.4.5/aframe/build/aframe-ar.js'></script>
-    <!-- Animation Components -->+
+    <!-- Animation Components -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
 
@@ -26,127 +29,77 @@
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <!-- Allows for animation of 3d models -->
-    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@6.1.1/dist/aframe-extras.min.js"></script>
-
     <link href="../styles/poiLocations.css" rel="stylesheet">
     <script src="../src/poiLocations.js"></script>
 </head>
 
 <body>
-    <a-scene arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' vr-mode-ui="enabled: false"
-        renderer="antialias: true; alpha: true" id="scene">
+    <a-scene arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' vr-mode-ui="enabled: false" raycaster
+        cursor="rayOrigin: mouse" renderer="antialias: true; alpha: true" id="scene">
 
         <a-assets>
-            
+            <a-asset-item id="speaker" src="../assets/ListenScenes/speakers/scene.gltf"></a-asset-item>
         </a-assets>
 
-        <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
+        <a-camera gps-new-camera='gpsMinDistance: 10'></a-camera>
 
         <!-- Overall container entity that holds every other entity -->
-        <a-entity id="everything-container" rotation="0 0 0" position="0 0 -10">
+        <a-entity id="everything-container" rotation="0 0 0">
+            <a-entity position="0 0 -3" scale="0.1 0.1 0.1" gltf-model="#speaker" class="clickable" listener></a-entity>
+        <a-entity cursor="fuse: false; rayOrigin: mouse" position="0 0 -1"></a-entity>
 
-            <a-entity id="kodak-container" position="-7 0 2" visible="false">
-                <a-entity
-                    gltf-model="#kodak-tower"
-                    id="kodakT"
-                    position="0 0 0"
-                    scale="3 3 3"
-                    animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear">
-                </a-entity>
-                <a-image id="kodak-img" src="#kodak-logo" position="1.27416 2.24993 1.20592" rotation="0 45 0" scale="2.5 2.5 2.5"></a-image>
-            </a-entity>
-
-            <a-entity id="xerox-container" position="0 0 0" visible="false">
-                <a-entity
-                    gltf-model="#xerox-tower"
-                    id="xeroxT"
-                    position="0 0 0"
-                    scale="0.03 0.03 0.03"
-                    animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear">
-                </a-entity>
-                <a-image id="xerox-img" src="#xerox-logo" position="0 2.4514 1.77343" scale="4 4 4"></a-image>
-            </a-entity>
-
-            <!-- ******************* DELETE ******************* -->
-            <a-entity id="xerox-container" position="0 0 0" visible="false">
-                <a-entity
-                    gltf-model="#xerox-tower"
-                    id=""
-                    position="0 0 0"
-                    scale="0.03 0.03 0.03"
-                    animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear">
-                </a-entity>
-                <a-image id="xerox-img" src="#xerox-logo" position="0 2.4514 1.77343" scale="4 4 4"></a-image>
-            </a-entity> 
-            <!-- ******************* DELETE ******************* -->
-
-            <a-entity id="bausch-container" position="7 0 2" visible="false">
-                <a-entity
-                    gltf-model="#bausch-tower"
-                    id="bauschT"
-                    position="0 0 0"
-                    scale="0.06 0.06 0.06"
-                    animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear">
-                </a-entity>
-                <a-image id="bausch-img" src="#bausch-logo" position="-2.43475 2.62071 2.44857" rotation="0 -45 0" scale="3.5 3.5 3.5"></a-image>
-            </a-entity>
-
-            <a-entity id="flower-container" position="0 3.86 1" scale="5 5 5" visible="false">
-                <a-entity id="flower-left" gltf-model="#flower" position="-0.65 0 0" scale="1 1 1" rotation="0 -80 0"></a-entity>
-                <a-entity id="flower-right" gltf-model="#flower" position="0.65 0 0" scale="1 1 1" rotation="0 -105 0"></a-entity>
-            </a-entity>
-
-            <a-entity id="people-container" position="-1.89 2 0" scale="3 3 3" visible="true">
-                <a-entity id="people-educator" gltf-model="#educator" position="0 0 0" scale="1 1 1" rotation="0 0 0" visible="false"></a-entity>
-                <a-entity id="people-creator" gltf-model="#creator" position="0 0 0" scale="1 1 1" rotation="0 0 0" visible="false"></a-entity>
-                <a-entity id="people-engineer" gltf-model="#engineer" position="0 0 0" scale="1 1 1" rotation="0 0 0" visible="false"></a-entity>
-                <a-entity id="people-artist" gltf-model="#artist" position="0 0 0" scale="1 1 1" rotation="0 0 0" visible="false"></a-entity>
-                <a-entity id="people-activist" gltf-model="#activist" position="0 0 0" scale="1 1 1" rotation="0 0 0" visible="false"></a-entity>
-            </a-entity>
-
-            <a-image id="jnj-logo" src="#jnjlogo" position="0 2.4 0" scale="4.5 4.5 4.5" visible="false"></a-image>
-
-            <!-- FIREWORKS AND CONFETTI WILL GO HERE -->
-            <a-entity id="confetti-container" visible="false">
-                <a-entity id="confetti-left" gltf-model="#confetti" position="-2 0 0" scale="1 1 1" rotation="0 0 0"></a-entity>
-                <a-entity id="confetti-right" gltf-model="#confetti" position="2 0 0" scale="1 1 1" rotation="0 0 0"></a-entity>
-            </a-entity>
-
-        </a-entity>
+    </a-entity>
+    
     </a-scene>
 
     <div id="UI">
 
     </div>
+
 </body>
 
-<script type="module">
+
+<script>
 
     window.onload = () => {
         document.querySelector('a-scene').setAttribute('timeline-control', '');
     }
 
     const buildTimeline = () => {
-        const tl = gsap.timeline({ paused: true });
 
-        
+        const tl = gsap.timeline({ paused: true });
 
         return tl;
     }
 
+    const sound = new Howl({
+                src: ["../audio/midpoint2.mp3"],
+
+            });
+
+            AFRAME.registerComponent("listener", {
+                init: function () {
+                    // this.el.addEventListener("model-loaded", () => {
+                        this.el.addEventListener("click", () => {
+                           sound.play();
+                            console.log("Sound playing!");
+                            
+                        });
+                    // });
+                }
+            });
+            // Load the UI
 
     AFRAME.registerComponent('timeline-control', {
         init: function () {
-            const sound = new Howl({
-                src: ["../audio/midpoint2.mp3"]
-            });
-            // load captions from JSON file
 
+
+          
+            // load captions from JSON file
             let captions = [];
+            //change for each scene
             loadCaptions(6).then((captions) => {
                 // console.log(captions);
-
                 // Now you'll see the actual parsed captions
                 setInterval(() => {
                     if (sound.playing()) {
@@ -155,23 +108,23 @@
                             currentTime >= cue.start && currentTime <= cue.end
                         );
 
-
                         captionDisplay.innerHTML = currentCaption ? currentCaption.text : "";
                     }
                 }, 100);
             });
 
+            
+
             //Load the time line
             const timeline = buildTimeline();
 
-            // Load the UI
             let UI = document.querySelector("#UI");
             loadUI(6, UI);
 
             // Add onClick events
             let startBtn = document.getElementById("startBtn")
             startBtn.addEventListener("click", () => {
-                sound.play();
+
                 timeline.play(); // play from the beginning
                 startBtn.style.display = "none";
             });
@@ -181,20 +134,21 @@
             document.getElementById("restartBtn").addEventListener("click", () => {
                 sound.stop(); // stop resets the playback and stops it
                 sound.play();
-                timeline.restart();// play from the beginning
+                // timeline.revert();
+                // timeline.restart();// play from the beginning
             });
 
             document.getElementById("mapBtn").addEventListener("click", () => {
                 sound.stop(); // stop resets the playback and stops it
                 // timeline.stop(); // stop the timeline
 
-                window.location.href = `../map.html?startingLocation=artCenterQuad`; //LAST PART OF STRING CHANGES ON EACH PAGE
+                window.location.href = `../map.html?startingLocation=Midpoint2`;
             });
+
         }
     });
 
-    // Attach the component to the scene
-    document.querySelector('a-scene').setAttribute('timeline-control', '');
+
 </script>
 
 </html>

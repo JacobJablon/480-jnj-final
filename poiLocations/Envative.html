@@ -9,6 +9,9 @@
     <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
     <!-- Pure three.js code that the A-Frame components use for location-based AR -->
     <script src='https://raw.githack.com/AR-js-org/AR.js/3.4.5/three.js/build/ar-threex-location-only.js'></script>
+    <!-- we use three.js to handle raycasting
+    <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.min.js"></script> -->
+
     <!-- AR.js A-Frame components (recommended to use version 3.4.5, rather than master) -->
     <script src='https://raw.githack.com/AR-js-org/AR.js/3.4.5/aframe/build/aframe-ar.js'></script>
     <!-- Animation Components -->
@@ -31,56 +34,22 @@
 </head>
 
 <body>
-    <a-scene arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' vr-mode-ui="enabled: false"
-        renderer="antialias: true; alpha: true" id="scene">
+    <a-scene arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' vr-mode-ui="enabled: false" raycaster
+        cursor="rayOrigin: mouse" renderer="antialias: true; alpha: true" id="scene">
 
         <a-assets>
-            <a-asset-item id="dirt-pile" src="../assets/EnvativeScene/dirt-pile/scene.gltf"></a-asset-item>
-            <a-asset-item id="grass-pile" src="../assets/EnvativeScene/grass/scene.gltf"></a-asset-item>
-            <a-asset-item id="grad-cap" src="../assets/EnvativeScene/grad-cap/scene.gltf"></a-asset-item>
-            <a-asset-item id="med-kit" src="../assets/EnvativeScene/medical_kit/scene.gltf"></a-asset-item>
-            <a-asset-item id="flower" src="../assets/EndingScene/flower/scene.gltf"></a-asset-item>
-            <a-asset-item id="creatorObj" src="../assets/EndingScene/creator/scene.gltf"></a-asset-item>
-            <a-asset-item id="engineerObj" src="../assets/EndingScene/engineer/scene.gltf"></a-asset-item>
-            <a-asset-item id="artistObj" src="../assets/EndingScene/artist/scene.gltf"></a-asset-item>
+            <a-asset-item id="speaker" src="../assets/ListenScenes/speakers/scene.gltf"></a-asset-item>
         </a-assets>
 
-        <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
+        <a-camera gps-new-camera='gpsMinDistance: 10'></a-camera>
 
         <!-- Overall container entity that holds every other entity -->
-        <a-entity id="everything-container" rotation="0 0 0" position="0 0 -10">
-            <a-entity id="ground" gltf-model="#dirt-pile" position="0 0 0" scale="3 2 3">
-                <a-entity id="grass" gltf-model="#grass-pile" position="0 0 0" scale="2 0 2">
-                </a-entity>
+        <a-entity id="everything-container" rotation="0 0 0">
+            <a-entity position="0 0 -3" scale="0.1 0.1 0.1" gltf-model="#speaker" class="clickable" listener></a-entity>
+        <a-entity cursor="fuse: false; rayOrigin: mouse" position="0 0 -1"></a-entity>
 
-                <a-entity id="gradHats">
-                    <a-entity id="grad1" visible="false" gltf-model="#grad-cap" position="0 7 0" scale="1 1 1">
-                    </a-entity>
-                    <a-entity id="grad2" visible="false" gltf-model="#grad-cap" position="0 7 0" scale="1 1 1">
-                    </a-entity>
-
-                </a-entity>
-
-
-
-
-
-                <a-entity id="medFlower" visible="" position="0 0 -2" scale="1 1 1">
-                    <a-entity class="flower" gltf-model="#flower" position="" scale="" rotation="0 -90 0">
-                    </a-entity>
-
-                    <a-entity id="medKit" gltf-model="#med-kit" position="0.02451 -0.01803 0" scale="0.01 0.01 0.01">
-                    </a-entity>
-
-                </a-entity>
-                <a-entity id="flowerContainer" position="0 0 0">
-
-                </a-entity>
-
-
-
-
-            </a-entity>
+    </a-entity>
+    
     </a-scene>
 
     <div id="UI">
@@ -89,7 +58,8 @@
 
 </body>
 
-<script type="module">
+
+<script>
 
     window.onload = () => {
         document.querySelector('a-scene').setAttribute('timeline-control', '');
@@ -97,184 +67,38 @@
 
     const buildTimeline = () => {
 
-
-
-
         const tl = gsap.timeline({ paused: true });
-
-        const medContainer = document.querySelector("#medFlower")
-        const medFlower = document.querySelector("#medFlower .flower")
-        const creatorContainer = document.querySelector("#flowerContainer")
-        const flowerContainer = document.querySelector("#flowerContainer .flower")
-        const engineerContainer = document.querySelector("#engineerFLower")
-        const engineerFlower = document.querySelector("#engineerFLower .flower")
-        const grad1 = document.querySelector("#grad1")
-        const grad2 = document.querySelector("#grad2")
-        const medKit = document.querySelector("#medKit")
-        // At the next step in the timeline, the animation function will be called
-        tl.call(() => {
-            grad1.setAttribute('visible', true);
-        }, null, ">")
-            .to(grad1.object3D.position, { y: -1, duration: 3, ease: "power1.out" }, ">")
-            .to(grad1.object3D.scale, { x: 0.5, y: 0.5, z: 0.5, duration: 3, ease: "power1.out" }, "")
-            .to(medContainer.object3D.position, { y: 3, duration: 2, ease: "power1.out" }, ">+=2")
-            .to(medContainer.object3D.scale, { x: 1.5, y: 1.5, z: 1.5, duration: 2, ease: "power1.out" }, ">")
-            .call(() => {
-                medFlower.setAttribute('animation-mixer', 'clip: Scene; timeScale: 0.4');
-            }, null, ">")
-            .call(() => {
-                medFlower.removeAttribute('animation-mixer');
-            }, null, ">+3.980")
-            .to(medKit.object3D.scale, { x: 5, y: 5, z: 5, duration: 10, ease: "power1.out" }, ">")
-            .to(medKit.object3D.position, { z: 1, y: -1, duration: 3, ease: "power1.out" }, "<+=2")
-            .to(medKit.object3D.position, { z: -2, duration: 5, ease: "power1.out" }, ">+=2")
-            .call(() => {
-                grad2.setAttribute('visible', true);
-            }, null, ">")
-            .to(grad2.object3D.position, { y: -1, duration: 3, ease: "power1.out" }, ">")
-            .to(grad2.object3D.scale, { x: 0.5, y: 0.5, z: 0.5, duration: 3, ease: "power1.out" }, "")
-            .to(creatorContainer.object3D.position, { y: 3, duration: 2, ease: "power1.out" }, ">+=2")
-            .to(creatorContainer.object3D.scale, { x: 1.5, y: 1.5, z: 1.5, duration: 2, ease: "power1.out" }, ">")
-            .call(() => {
-                flowerContainer.setAttribute('animation-mixer', 'clip: Scene; timeScale: 0.4');
-            }, null, ">")
-            .call(() => {
-                flowerContainer.removeAttribute('animation-mixer');
-            }, null, ">+3.980")
-            .call(() => {
-                for (let i = 0; i < 30; i++) {
-
-                    let coordX = Math.random() * 5;
-                    let coordZ = Math.random() * 5;
-                    // let coordY = Math.random() * 5;
-
-                    let hmtl = `
-            <a-entity
-                class="flower"
-                gltf-model="#flower"
-                scale="1 1 1"
-                rotation="90 0 0"
-                position="${coordX} 0 ${coordZ}">
-            </a-entity>
-            `;
-
-                    flowerContainer.innerHTML += html
-                };
-                //paper swirl function ************
-            }, null, ">+=10")
-            .call(() => {
-
-                movers.forEach((el) => {
-                    const obj = el.object3D;
-                    const startPos = obj.position.clone();
-
-                    // Create a nested timeline for each mover
-                    const moveTl = gsap.timeline({ repeat: 1, });
-
-                    moveTl.to(obj.position, {
-                        z: startPos.z + 5,
-                        duration: 0.5,
-                        ease: "power1.inOut"
-                    })
-                        .call(() => {
-                            obj.position.set(startPos.x, startPos.y, startPos.z);
-                        });
-
-                    // Add the nested timeline to the main timeline
-                    tl.add(moveTl, "<+1");
-                }, null, ">+=5") // “>” makes it run after everything else
-            });
-
-
-
-        // .to(blt.object3D.position, { x: 3, y: 2, duration: 3, ease: "power1.out" }, "<")
-        // .to(xt.object3D.position, { y: 3, duration: 3, ease: "power1.out" }, "<")
-        // .call(() => {
-        //     container1.setAttribute('visible', false);
-        // }, null, 31)
-        // .to(xeroxLogo.object3D.scale, {
-        //     x: 10, y: 10, z: 10, duration: 3, ease: "elastic.out"
-        // }, ">")
-
-        // .to(xeroxLogo.object3D.scale, {
-        //     x: 0.1, y: 0.1, z: 0.1, duration: 5, ease: "linear"
-        // }, 48)// section 2
-        // .call(() => {
-        //     container2.setAttribute('visible', true);
-        // }, null, ">")
-        // // 1 second later
-        // .call(() => {
-        //     chesterImg.setAttribute('visible', true);
-        // }, null, 55) // 1 second later
-        // .call(() => {
-        //     haloidImg.setAttribute('visible', true);
-        // }, null, ">+=15") // 1 second later
-        // .call(() => {
-        //     container2.setAttribute('visible', false);
-        // }, null, ">+=8")
-        // .call(() => {
-        //     xeroxB.setAttribute('visible', true);
-        // }, null, ">")
-        // .call(() => {
-        //     for (let i = 0; i < 60; i++) {
-
-        //         let coordX = Math.random() < 0.5 ? Math.round(Math.random() * 10) : Math.round(Math.random() * -10);
-        //         let coordZ = Math.random() < 0.5 ? Math.round(Math.random() * 10) : Math.round(Math.random() * -10);
-        //         let duration = 2000 + Math.round(Math.random() * 2000);
-        //         let coordY = Math.random() * 30;
-
-        //         let paperContainerHTML = `
-        // <a-entity
-        //     class="paper"
-        //     gltf-model="#paper"
-        //     scale="1 1 1"
-        //     rotation="90 0 0"
-        //     position="${coordX} ${coordY} ${coordZ}"
-        //     animation="property: rotation; to: 90 360 0; loop: true; dur: ${duration}; easing: linear">
-        // </a-entity>
-        // `;
-
-        //         paperContainer.innerHTML += paperContainerHTML
-        //     };
-        //     //paper swirl function ************
-        // }, null, ">+=10")
-        // .call(() => {
-        //     xeroxB.setAttribute('visible', false);
-        //     xeroxAlto.setAttribute('visible', true);
-        // }, null, ">+7")
-        // .call(() => {
-        //     paperContainer.setAttribute('visible', false);
-        // }, null, ">+8")
-        // .call(() => {
-        //     //call explosion
-        //     xeroxAlto.setAttribute('visible', false);
-        // }, null, ">+15")
-        // .call(() => {
-        //     declineGraph.setAttribute('visible', true);
-        // }, null, ">")
-
-
-        // 1 second later
 
         return tl;
     }
 
+    const sound = new Howl({
+                src: ["../audio/midpoint2.mp3"],
+
+            });
+
+            AFRAME.registerComponent("listener", {
+                init: function () {
+                   
+                        this.el.addEventListener("click", () => {
+                           sound.play();
+                            console.log("Sound playing!");
+                            
+                        });
+                    
+                }
+            });
+            // Load the UI
 
     AFRAME.registerComponent('timeline-control', {
         init: function () {
 
 
-
-
-
-            const sound = new Howl({
-                src: ["../audio/Envative.mp3"],
-
-            });
+          
             // load captions from JSON file
             let captions = [];
             //change for each scene
-            loadCaptions(5).then((captions) => {
+            loadCaptions(7).then((captions) => {
                 // console.log(captions);
                 // Now you'll see the actual parsed captions
                 setInterval(() => {
@@ -289,19 +113,18 @@
                 }, 100);
             });
 
-
-            // Load the UI
+            
 
             //Load the time line
             const timeline = buildTimeline();
 
             let UI = document.querySelector("#UI");
-            loadUI(5, UI);
+            loadUI(7, UI);
 
             // Add onClick events
             let startBtn = document.getElementById("startBtn")
             startBtn.addEventListener("click", () => {
-                sound.play();
+
                 timeline.play(); // play from the beginning
                 startBtn.style.display = "none";
             });
@@ -311,22 +134,21 @@
             document.getElementById("restartBtn").addEventListener("click", () => {
                 sound.stop(); // stop resets the playback and stops it
                 sound.play();
-                timeline.revert(); // revert state of objects to their original state
-                timeline.restart();// play from the beginning
+                // timeline.revert();
+                // timeline.restart();// play from the beginning
             });
 
             document.getElementById("mapBtn").addEventListener("click", () => {
                 sound.stop(); // stop resets the playback and stops it
                 // timeline.stop(); // stop the timeline
 
-                window.location.href = `../map.html?startingLocation=envative`;
+                window.location.href = `../map.html?startingLocation=Envative`;
             });
 
         }
     });
 
-    // Attach the component to the scene
-    document.querySelector('a-scene').setAttribute('timeline-control', '');
+
 </script>
 
 </html>
